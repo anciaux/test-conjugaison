@@ -92,7 +92,11 @@ def pick_entry(pronom, verb, tense):
         __pronom = map_pronom_participe[pronom]
         return conj[_pronom] + " " + conj2[__pronom]
 
-    raise
+    if tense == 'imparfait':
+        conj = conjugaisons[verb]["indicative imperfect"]
+        return conj[_pronom]
+
+    raise RuntimeError(f"temps inconnu: {tense}")
 
 
 random.seed()
@@ -108,7 +112,8 @@ past = set()
 verbs = list(conjugaisons.keys())
 Nverbs = len(verbs)
 
-tenses = ['present', 'passé composé']
+tenses = ['present', 'passé composé', 'imparfait']
+# tenses = ['imparfait']
 Ntenses = len(tenses)
 
 if N > Nverbs*len(pronoms)*Ntenses:
