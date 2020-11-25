@@ -29,7 +29,7 @@ participes = {
     'oublier':  'avoir',
     'prendre':  'avoir',
     'sortir':   'avoir',
-    'courrir':  'avoir',
+    'courir':  'avoir',
     'voir':     'avoir',
     'venir':    'être',
     'employer': 'avoir',
