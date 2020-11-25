@@ -4,26 +4,34 @@ import subprocess
 import random
 import os
 
-#verb_list = ['être', 'avoir', 'aller', 'aimer', 'finir']
-verb_list = ['être', 'avoir', 'dire', 'faire', 'entendre', 'savoir', 'vouloir',
-             'manger', 'commencer', 'mettre', 'pouvoir', 'oublier']
+verb_list = ['être', 'avoir', 'aller', 'aimer', 'finir', 'dire', 'faire', 'entendre', 'savoir', 'vouloir', 'manger', 'commencer',
+             'mettre', 'pouvoir', 'oublier', 'prendre', 'sortir', 'courrir', 'voir', 'venir' 'employer', 'payer', 'acheter', 'peler']
 
 participes = {
-    'être':  'avoir',
-    'avoir': 'avoir',
-    'aller': 'être',
-    'aimer': 'avoir',
-    'finir': 'avoir',
-    'dire': 'avoir',
-    'faire': 'avoir',
+    'être':     'avoir',
+    'avoir':    'avoir',
+    'aller':    'être',
+    'aimer':    'avoir',
+    'finir':    'avoir',
+    'dire':     'avoir',
+    'faire':    'avoir',
     'entendre': 'avoir',
-    'savoir': 'avoir',
-    'vouloir': 'avoir',
-    'manger': 'avoir',
+    'savoir':   'avoir',
+    'vouloir':  'avoir',
+    'manger':   'avoir',
     'commencer': 'avoir',
-    'mettre': 'avoir',
-    'pouvoir': 'avoir',
-    'oublier': 'avoir'
+    'mettre':   'avoir',
+    'pouvoir':  'avoir',
+    'oublier':  'avoir',
+    'prendre':  'avoir',
+    'sortir':   'avoir',
+    'courrir':  'avoir',
+    'voir':     'avoir',
+    'venir':    'être',
+    'employer': 'avoir',
+    'payer':    'avoir',
+    'acheter':  'avoir',
+    'peler':    'avoir',
 }
 
 conjugaisons = {}
