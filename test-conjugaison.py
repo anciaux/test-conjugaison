@@ -4,8 +4,12 @@ import subprocess
 import random
 import os
 
-verb_list = ['être', 'avoir', 'aller', 'aimer', 'finir', 'dire', 'faire', 'entendre', 'savoir', 'vouloir', 'manger', 'commencer',
-             'mettre', 'pouvoir', 'oublier', 'prendre', 'sortir', 'courrir', 'voir', 'venir' 'employer', 'payer', 'acheter', 'peler']
+verb_list = [
+    'être', 'avoir', 'aller', 'aimer', 'finir',
+    'dire', 'faire', 'entendre', 'savoir', 'vouloir',
+    'manger', 'commencer', 'mettre', 'pouvoir', 'oublier',
+    'prendre', 'sortir', 'courir', 'voir', 'venir',
+    'employer', 'payer', 'acheter', 'peler']
 
 participes = {
     'être':     'avoir',
