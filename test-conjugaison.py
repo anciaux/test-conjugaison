@@ -5,33 +5,35 @@ import random
 import os
 
 verb_list = [
-    'être',
-    'avoir',
-    'aller',
-    'aimer',
-    'finir',
-    'dire',
-    'faire',
-    'entendre',
-    'savoir',
-    'vouloir',
-    'manger',
-    'commencer',
-    'mettre',
-    'pouvoir',
-    'oublier',
-    'prendre',
-    'sortir',
-    'courir',
-    'voir',
-    'venir',
-    'employer',
-    'payer',
-    'acheter',
-    'peler']
+    'être',        # ok
+    'chanter',     # ok
+    'avoir',       # ok
+    'aller',       # ok
+    'aimer',       #
+    'finir',       # ok
+    'dire',        # ok
+    'faire',       # ok
+    'entendre',    # ok
+    'savoir',      # ok
+    'vouloir',     # ok
+    'manger',      # ok
+    'commencer',   # ok
+    'mettre',      # ok
+    'pouvoir',     # ok
+    'oublier',     # ok
+    'prendre',     # ok
+    'sortir',      # ok
+    'courir',      # ok
+    'voir',        # ok
+    'venir',       # ok
+    'employer',    # ok
+    'payer',       # ok
+    'acheter',     # ok
+    'peler']       # ok
 
 participes = {
     'être':     'avoir',
+    'chanter':  'avoir',
     'avoir':    'avoir',
     'aller':    'être',
     'aimer':    'avoir',
