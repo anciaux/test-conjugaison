@@ -49,7 +49,7 @@ participes = {
     'pouvoir':  'avoir',
     'oublier':  'avoir',
     'prendre':  'avoir',
-    'sortir':   'avoir',
+    'sortir':   'être',
     'courir':  'avoir',
     'voir':     'avoir',
     'venir':    'être',
