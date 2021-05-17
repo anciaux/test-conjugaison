@@ -230,7 +230,11 @@ for i in range(0, N):
         if first_shot == 2:
             print('solution: ' + ' ou '.join(reponse))
             break
-        res = input(pronoms[b] + " ")
+        if tenses[c] == 'impératif':
+            p = replace_for_imperatif(pronoms[b])
+            res = input(p + " ")
+        else:
+            res = input(pronoms[b] + " ")
 
     print("bravo!!!")
     if first_shot == 0:
