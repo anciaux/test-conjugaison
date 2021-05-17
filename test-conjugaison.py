@@ -5,11 +5,30 @@ import random
 import os
 
 verb_list = [
-    'être', 'avoir', 'aller', 'aimer', 'finir',
-    'dire', 'faire', 'entendre', 'savoir', 'vouloir',
-    'manger', 'commencer', 'mettre', 'pouvoir', 'oublier',
-    'prendre', 'sortir', 'courir', 'voir', 'venir',
-    'employer', 'payer', 'acheter', 'peler']
+    'être',
+    'avoir',
+    'aller',
+    'aimer',
+    'finir',
+    'dire',
+    'faire',
+    'entendre',
+    'savoir',
+    'vouloir',
+    'manger',
+    'commencer',
+    'mettre',
+    'pouvoir',
+    'oublier',
+    'prendre',
+    'sortir',
+    'courir',
+    'voir',
+    'venir',
+    'employer',
+    'payer',
+    'acheter',
+    'peler']
 
 participes = {
     'être':     'avoir',
@@ -100,6 +119,14 @@ def pick_entry(pronom, verb, tense):
         conj = conjugaisons[verb]["indicative imperfect"]
         return conj[_pronom]
 
+    if tense == 'futur':
+        conj = conjugaisons[verb]["indicative future"]
+        return conj[_pronom]
+
+    if tense == 'passé simple':
+        conj = conjugaisons[verb]["indicative past"]
+        return conj[_pronom]
+
     raise RuntimeError(f"temps inconnu: {tense}")
 
 
@@ -116,7 +143,7 @@ past = set()
 verbs = list(conjugaisons.keys())
 Nverbs = len(verbs)
 
-tenses = ['present', 'passé composé', 'imparfait']
+tenses = ['present', 'passé composé', 'imparfait', 'passé simple', 'futur']
 # tenses = ['imparfait']
 Ntenses = len(tenses)
 
