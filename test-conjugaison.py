@@ -166,7 +166,7 @@ for i in range(0, N):
     verb = verbs[a]
     print("question " + str(i) + "/" + str(N) + " : points: " +
           str(points) + "/" + str(N))
-    print("verbe: {0}, temps {1}".format(verb, tenses[c]))
+    print("verbe: {0}, temps => {1}".format(verb, tenses[c]))
     reponse = pick_entry(pronoms[b], verb, tenses[c])
     reponse = [r.strip() for r in reponse.split(',')]
     # print(reponse)
