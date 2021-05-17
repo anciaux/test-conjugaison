@@ -96,7 +96,43 @@ map_pronom_participe = {
     'elles': 3,
 }
 
+map_pronom_imperatif = {
+    'je': 0,
+    'tu': 0,
+    'il': 0,
+    'elle': 0,
+    'on': 0,
+    'nous': 1,
+    'vous': 2,
+    'ils': 1,
+    'elles': 2,
+}
+
+
 pronoms = ['je', 'tu', 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles']
+
+
+def replace_for_imperatif(pronom):
+    pronom = pronom.lower()
+    if pronom == 'je':
+        return '(tu)'
+    if pronom == 'tu':
+        return '(tu)'
+    if pronom == 'il':
+        return '(tu)'
+    if pronom == 'elle':
+        return '(tu)'
+    if pronom == 'on':
+        return '(tu)'
+    if pronom == 'nous':
+        return '(nous)'
+    if pronom == 'vous':
+        return '(vous)'
+    if pronom == 'ils':
+        return '(nous)'
+    if pronom == 'elles':
+        return '(vous)'
+    raise RuntimeError('pronom indéfini')
 
 
 def pick_entry(pronom, verb, tense):
@@ -129,6 +165,15 @@ def pick_entry(pronom, verb, tense):
         conj = conjugaisons[verb]["indicative past"]
         return conj[_pronom]
 
+    if tense == 'conditionnel':
+        conj = conjugaisons[verb]["conditional present"]
+        return conj[_pronom]
+
+    if tense == 'impératif':
+        _pronom = map_pronom_imperatif[pronom.lower()]
+        conj = conjugaisons[verb]["imperative present"]
+        return conj[_pronom]
+
     raise RuntimeError(f"temps inconnu: {tense}")
 
 
@@ -145,7 +190,8 @@ past = set()
 verbs = list(conjugaisons.keys())
 Nverbs = len(verbs)
 
-tenses = ['present', 'passé composé', 'imparfait', 'passé simple', 'futur']
+tenses = ['present', 'passé composé', 'imparfait',
+          'passé simple', 'futur', 'conditionnel', 'impératif']
 # tenses = ['imparfait']
 Ntenses = len(tenses)
 
@@ -167,10 +213,15 @@ for i in range(0, N):
     print("question " + str(i) + "/" + str(N) + " : points: " +
           str(points) + "/" + str(N))
     print("verbe: {0}, temps => {1}".format(verb, tenses[c]))
+
     reponse = pick_entry(pronoms[b], verb, tenses[c])
     reponse = [r.strip() for r in reponse.split(',')]
     # print(reponse)
-    res = input(pronoms[b] + " ")
+    if tenses[c] == 'impératif':
+        p = replace_for_imperatif(pronoms[b])
+        res = input(p + " ")
+    else:
+        res = input(pronoms[b] + " ")
     first_shot = 0
     while res not in reponse:
         # os.system("beep")
