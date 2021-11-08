@@ -29,7 +29,19 @@ verb_list = [
     'employer',    # ok
     'payer',       # ok
     'acheter',     # ok
-    'peler']       # ok
+    'peler',       # ok
+    'appeler',     # ok
+    'boire',       # ok
+    'craindre',    # ok
+    'falloir',     # ok
+    'fuir',        # ok
+    'jeter',       # ok
+    'ouvrir',      # ok
+    'plaire',      # ok
+    'rendre',      # ok
+    'valoir',      # ok
+    'vivre'        # ok
+]
 
 participes = {
     'être':     'avoir',
@@ -57,6 +69,17 @@ participes = {
     'payer':    'avoir',
     'acheter':  'avoir',
     'peler':    'avoir',
+    'appeler':  'avoir',
+    'boire':    'avoir',
+    'craindre': 'avoir',
+    'falloir':  'avoir',
+    'fuir':     'avoir',
+    'jeter':    'avoir',
+    'ouvrir':   'avoir',
+    'plaire':   'avoir',
+    'rendre':   'avoir',
+    'valoir':   'avoir',
+    'vivre':    'avoir'
 }
 
 conjugaisons = {}
@@ -192,6 +215,8 @@ Nverbs = len(verbs)
 
 tenses = ['present', 'passé composé', 'imparfait',
           'passé simple', 'futur', 'conditionnel', 'impératif']
+tenses = ['present', 'passé composé', 'impératif']
+
 # tenses = ['imparfait']
 Ntenses = len(tenses)
 
