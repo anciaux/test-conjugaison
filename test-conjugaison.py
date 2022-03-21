@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-import subprocess
+# import os
 import random
-import os
+import subprocess
+
 
 verb_list = [
     'être',        # ok
@@ -176,6 +177,26 @@ def pick_entry(pronom, verb, tense):
         __pronom = map_pronom_participe[pronom]
         return conj[_pronom] + " " + conj2[__pronom]
 
+    if tense == 'futur antérieur':
+        conj = conjugaisons[participes[verb]]["indicative future"]
+        conj2 = conjugaisons[verb]["participle past"]
+        if len(conj2) == 1:
+            return conj[_pronom] + " " + conj2[0]
+        if participes[verb] == 'avoir':
+            return conj[_pronom] + " " + conj2[0]
+        __pronom = map_pronom_participe[pronom]
+        return conj[_pronom] + " " + conj2[__pronom]
+
+    if tense == 'plus que parfait':
+        conj = conjugaisons[participes[verb]]["indicative imperfect"]
+        conj2 = conjugaisons[verb]["participle past"]
+        if len(conj2) == 1:
+            return conj[_pronom] + " " + conj2[0]
+        if participes[verb] == 'avoir':
+            return conj[_pronom] + " " + conj2[0]
+        __pronom = map_pronom_participe[pronom]
+        return conj[_pronom] + " " + conj2[__pronom]
+
     if tense == 'imparfait':
         conj = conjugaisons[verb]["indicative imperfect"]
         return conj[_pronom]
@@ -216,8 +237,11 @@ Nverbs = len(verbs)
 tenses = ['present', 'passé composé', 'imparfait',
           'passé simple', 'futur', 'conditionnel', 'impératif']
 tenses = ['present', 'passé composé', 'impératif']
+tenses = ['imparfait', 'passé simple', 'futur', 'conditionnel']
+# tenses = ['imparfait', 'plus que parfait']
+# tenses = ['imparfait', 'plus que parfait']
+tenses = ['futur antérieur']
 
-# tenses = ['imparfait']
 Ntenses = len(tenses)
 
 if N > Nverbs*len(pronoms)*Ntenses:
@@ -234,13 +258,18 @@ for i in range(0, N):
         c = random.randint(0, Ntenses-1)
 
     past.add((a, b, c))
-    verb = verbs[a]
+    try:
+        verb = verbs[a]
+        reponse = pick_entry(pronoms[b], verb, tenses[c])
+        reponse = [r.strip() for r in reponse.split(',')]
+    except:
+        print(f"error: {a} {b} {c}")
+        continue
+
     print("question " + str(i) + "/" + str(N) + " : points: " +
           str(points) + "/" + str(N))
     print("verbe: {0}, temps => {1}".format(verb, tenses[c]))
 
-    reponse = pick_entry(pronoms[b], verb, tenses[c])
-    reponse = [r.strip() for r in reponse.split(',')]
     # print(reponse)
     if tenses[c] == 'impératif':
         p = replace_for_imperatif(pronoms[b])
