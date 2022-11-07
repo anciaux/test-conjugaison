@@ -41,7 +41,34 @@ verb_list = [
     'plaire',      # ok
     'rendre',      # ok
     'valoir',      # ok
-    'vivre'        # ok
+    'vivre',       # ok
+    'placer',
+    'avancer',
+    'devoir',
+    'croire',
+    'comprendre',
+    'reprendre',
+    'apprendre',
+    'répondre',
+    'attendre',
+    'perdre',
+    'descendre',
+    'tenir',
+    'devenir',
+    'retenir',
+    'sentir',
+    'partir',
+    'connaître',
+    'paraître',
+    'reconnaître',
+    'apparaître',
+    'suivre',
+    'mourir',
+    'couvrir',
+    'offrir',
+    'souffrir',
+    'écrire',
+    'lire'
 ]
 
 participes = {
@@ -80,21 +107,73 @@ participes = {
     'plaire':   'avoir',
     'rendre':   'avoir',
     'valoir':   'avoir',
-    'vivre':    'avoir'
+    'vivre':    'avoir',
+    'placer':   'avoir',
+    'avancer':  'avoir',
+    'devoir':   'avoir',
+    'croire':   'avoir',
+    'comprendre':   'avoir',
+    'reprendre':    'avoir',
+    'apprendre':    'avoir',
+    'répondre':    'avoir',
+    'attendre':    'avoir',
+    'perdre':    'avoir',
+    'descendre':    'avoir',
+    'tenir':    'avoir',
+    'devenir':    'être',
+    'retenir':    'avoir',
+    'sentir':    'avoir',
+    'partir':    'être',
+    'connaître':    'avoir',
+    'paraître':    'avoir',
+    'reconnaître':    'avoir',
+    'apparaître':    'avoir',
+    'suivre':    'avoir',
+    'mourir':    'être',
+    'couvrir':    'avoir',
+    'offrir':    'avoir',
+    'souffrir':    'avoir',
+    'écrire':    'avoir',
+    'lire':    'avoir',
+
 }
 
-conjugaisons = {}
-for v in verb_list:
-    conjugaisons[v] = {}
+################################################################
 
-    p = subprocess.Popen('french-conjugator {0}'.format(v),
+
+def conjugate(verb):
+    conjugaison = {}
+    p = subprocess.Popen('french-conjugator {0}'.format(verb),
                          shell=True, stdout=subprocess.PIPE)
     lists = p.stdout.read().decode()
     tenses = [e.strip() for e in lists.split('-')]
     tenses = [e for e in tenses if e != '']
     tenses = dict([tuple(e.split(':')) for e in tenses if e != ''])
     for t, c in tenses.items():
-        conjugaisons[v][t.strip()] = [e for e in c.split('\n') if e != '']
+        conjugaison[t.strip()] = [e for e in c.split('\n') if e != '']
+    return conjugaison
+
+################################################################
+
+
+def load_verbs():
+    conjugaisons = {}
+    print("Loading....", end='')
+    s = set([x for x in verb_list if verb_list.count(x) > 1])
+    if len(s) > 0:
+        raise RuntimeError(f"found duplicates: {s}")
+    for v in verb_list:
+        if v not in participes:
+            raise RuntimeError(f"missing participes: {v}")
+    for v in verb_list:
+        conjugaisons[v] = conjugate(v)
+
+    print("done")
+    return conjugaisons
+################################################################
+
+
+conjugaisons = load_verbs()
 
 map_pronom = {
     'je': 0,
@@ -234,13 +313,16 @@ past = set()
 verbs = list(conjugaisons.keys())
 Nverbs = len(verbs)
 
-tenses = ['present', 'passé composé', 'imparfait',
-          'passé simple', 'futur', 'conditionnel', 'impératif']
-tenses = ['present', 'passé composé', 'impératif']
-tenses = ['imparfait', 'passé simple', 'futur', 'conditionnel']
+# tenses = ['present', 'passé composé', 'imparfait',
+#           'passé simple', 'futur', 'conditionnel', 'impératif',
+#           'plus que parfait', 'futur antérieur']
+tenses = ['imparfait', 'futur', 'conditionnel']
+
+# tenses = ['present', 'passé composé', 'impératif']
+# tenses = ['imparfait', 'passé simple', 'futur', 'conditionnel']
 # tenses = ['imparfait', 'plus que parfait']
 # tenses = ['imparfait', 'plus que parfait']
-tenses = ['futur antérieur']
+# tenses = ['futur antérieur']
 
 Ntenses = len(tenses)
 
