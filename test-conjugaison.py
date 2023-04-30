@@ -317,7 +317,14 @@ def pick_entry(pronom, verb, tense):
         return conj[_pronom]
 
     if tense == 'conditionnel passé':
-        conj = conjugaisons[verb]["conditional present"]
+        conj = conjugaisons[participes[verb]]["conditional present"]
+        conj2 = conjugaisons[verb]["participle past"]
+        if len(conj2) == 1:
+            return conj[_pronom] + " " + conj2[0]
+        if participes[verb] == 'avoir':
+            return conj[_pronom] + " " + conj2[0]
+        __pronom = map_pronom_participe[pronom]
+        return conj[_pronom] + " " + conj2[__pronom]
         return conj[_pronom]
 
     if tense == 'impératif':
