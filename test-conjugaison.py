@@ -21,7 +21,8 @@ tense_list = [
     'impératif présent',
     'impératif passé',
     'subjonctif présent',
-    'subjonctif passé'
+    'subjonctif passé',
+    'subjonctif imparfait'
 ]
 
 
@@ -339,6 +340,16 @@ def pick_entry(pronom, verb, tense):
         return conj[_pronom]
 
     if tense == 'subjonctif passé':
+        conj = conjugaisons[participes[verb]]["subjonctive present"]
+        conj2 = conjugaisons[verb]["participle past"]
+        if len(conj2) == 1:
+            return conj[_pronom] + " " + conj2[0]
+        if participes[verb] == 'avoir':
+            return conj[_pronom] + " " + conj2[0]
+        __pronom = map_pronom_participe[pronom]
+        return conj[_pronom] + " " + conj2[__pronom]
+
+    if tense == 'subjonctif imparfait':
         _pronom = map_pronom_imperatif[pronom.lower()]
         conj = conjugaisons[verb]["subjunctive imperfect"]
         return conj[_pronom]
@@ -387,7 +398,7 @@ def display_question(pronom, verb, tense, reponse):
         if res not in reponse:
             st.error("non!")
             st.session_state['first_shot'] += 1
-            if st.session_state['first_shot'] == 2:
+            if st.session_state['first_shot'] == 1:
                 st.warning('solution: ' + ' ou '.join(reponse))
                 st.session_state['first_shot'] = 0
                 st.session_state['current_question'] += 1
@@ -439,7 +450,7 @@ def main(N):
         add = display_question(pronom, verb, tense, reponse)
         if add:
             points += 1
-            time.sleep(0.5)
+            time.sleep(1)
             st.experimental_rerun()
     else:
         st.markdown('---')
