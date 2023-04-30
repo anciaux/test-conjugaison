@@ -392,7 +392,7 @@ def display_question(pronom, verb, tense, reponse):
     res = st.text_input('', placeholder='Ta réponse')
 
     if res != '':
-        if res not in reponse:
+        if res.lower() not in reponse:
             st.error("non!")
             st.session_state['first_shot'] += 1
             if st.session_state['first_shot'] == 2:
