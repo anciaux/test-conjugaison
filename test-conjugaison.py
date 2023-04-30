@@ -395,7 +395,7 @@ def display_question(pronom, verb, tense, reponse):
         if res not in reponse:
             st.error("non!")
             st.session_state['first_shot'] += 1
-            if st.session_state['first_shot'] == 1:
+            if st.session_state['first_shot'] == 2:
                 st.warning('solution: ' + ' ou '.join(reponse))
                 st.session_state['first_shot'] = 0
                 st.session_state['current_question'] += 1
