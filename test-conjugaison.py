@@ -326,10 +326,20 @@ def pick_entry(pronom, verb, tense):
         return conj[_pronom] + " " + conj2[__pronom]
         return conj[_pronom]
 
-    if tense == 'impératif':
+    if tense == 'impératif présent':
         _pronom = map_pronom_imperatif[pronom.lower()]
         conj = conjugaisons[verb]["imperative present"]
         return conj[_pronom]
+
+    if tense == 'impératif passé':
+        conj = conjugaisons[participes[verb]]["imperative present"]
+        conj2 = conjugaisons[verb]["participle past"]
+        if len(conj2) == 1:
+            return conj[_pronom] + " " + conj2[0]
+        if participes[verb] == 'avoir':
+            return conj[_pronom] + " " + conj2[0]
+        __pronom = map_pronom_participe[pronom]
+        return conj[_pronom] + " " + conj2[__pronom]
 
     if tense == 'subjonctif présent':
         _pronom = map_pronom_imperatif[pronom.lower()]
