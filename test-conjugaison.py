@@ -4,6 +4,7 @@
 import random
 import subprocess
 import streamlit as st
+import time
 ################################################################
 
 tense_list = [
@@ -390,6 +391,8 @@ def display_question(pronom, verb, tense, reponse):
                 st.warning('solution: ' + ' ou '.join(reponse))
                 st.session_state['first_shot'] = 0
                 st.session_state['current_question'] += 1
+                time.sleep(2)
+                st.experimental_rerun()
             return 0
         else:
             st.session_state['current_question'] += 1
@@ -432,7 +435,12 @@ def main(N):
         main(N)
 
     elif st.session_state['current_question'] < len(questions):
-        points += display_question(pronom, verb, tense, reponse)
+
+        add = display_question(pronom, verb, tense, reponse)
+        if add:
+            points += 1
+            time.sleep(0.5)
+            st.experimental_rerun()
     else:
         st.markdown('---')
         st.write('Points: ' + str(points) + '/' + str(N))
