@@ -405,7 +405,13 @@ def main(N):
     i = st.session_state['current_question']
     questions = st.session_state['questions']
     verb, pronom, tense = questions[i]
-    st.write(f"question {i}/{N} : points: {points}/{N}")
+
+    progress_text = f"question {i}/{N}"
+    my_bar = st.progress(0, progress_text)
+    my_bar.progress(i/len(questions), text=progress_text)
+    points_text = f"points: {points}/{N}"
+    points_bar = st.progress(0, points_text)
+    points_bar.progress(points/N, text=points_text)
 
     verb = verbs[verb]
     reponse = find_answer(verb, pronom, tense)
@@ -415,12 +421,12 @@ def main(N):
 
     if not reponse:
         st.session_state['current_question'] += 1
-        main(questions, N)
+        main(N)
 
     elif st.session_state['current_question'] < len(questions):
         points += display_question(pronom, verb, tense, reponse)
     else:
-        st.write('\n'*2 + '*'*20)
+        st.markdown('---')
         st.write('Points: ' + str(points) + '/' + str(N))
         st.write('Ta note: ' + str(int(points/N*12)/2))
         st.write('*'*10 + "\n")
