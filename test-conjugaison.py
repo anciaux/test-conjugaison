@@ -416,8 +416,10 @@ def display_question(pronom, verb, tense, reponse):
 
 def main(N):
 
-    points = 0
+    if 'points' not in st.session_state:
+        st.session_state['points'] = 0
 
+    points = st.session_state['points']
     if 'current_question' not in st.session_state:
         st.session_state['current_question'] = 0
 
@@ -447,6 +449,7 @@ def main(N):
         add = display_question(pronom, verb, tense, reponse)
         if add:
             points += 1
+            st.session_state['points'] = points
             time.sleep(2)
             st.experimental_rerun()
     else:
