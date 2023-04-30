@@ -441,8 +441,6 @@ def main(N):
 
     i = st.session_state['current_question']
     questions = st.session_state['questions']
-    verb, pronom, tense = questions[i]
-    reponse = find_answer(verb, pronom, tense)
 
     progress_text = f"question {i}/{N}"
     my_bar = st.progress(0, progress_text)
@@ -455,6 +453,9 @@ def main(N):
         st.session_state['first_shot'] = 0
 
     if st.session_state['current_question'] < len(questions):
+        verb, pronom, tense = questions[i]
+        reponse = find_answer(verb, pronom, tense)
+
         add = display_question(pronom, verb, tense, reponse)
         if add:
             points += 1
@@ -463,9 +464,9 @@ def main(N):
             st.experimental_rerun()
     else:
         st.markdown('---')
-        st.write('Points: ' + str(points) + '/' + str(N))
-        st.write('Ta note: ' + str(int(points/N*12)/2))
-        st.write('*'*10 + "\n")
+        st.write('## Points: ' + str(points) + '/' + str(N))
+        st.write('## Ta note: ' + str(int(points/N*12)/2))
+        st.markdown('---')
 
 
 ################################################################
