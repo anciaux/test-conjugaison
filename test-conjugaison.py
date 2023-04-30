@@ -392,9 +392,10 @@ def display_question(pronom, verb, tense, reponse):
                 st.session_state['current_question'] += 1
             return 0
         else:
-            if st.session_state['first_shot'] == 0:
-                st.session_state['current_question'] += 1
+            st.session_state['current_question'] += 1
             st.success("bravo!!!")
+            if st.session_state['first_shot'] == 0:
+                return 1
             st.session_state['first_shot'] = 0
             return 1
     return 0
