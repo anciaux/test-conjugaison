@@ -195,9 +195,6 @@ def load_verbs():
 ################################################################
 
 
-conjugaisons = load_verbs()
-
-################################################################
 map_pronom = {
     'je': 0,
     'tu': 1,
@@ -402,7 +399,7 @@ def display_question(pronom, verb, tense, reponse):
                 st.warning('solution: ' + ' ou '.join(reponse))
                 st.session_state['first_shot'] = 0
                 st.session_state['current_question'] += 1
-                time.sleep(1)
+                time.sleep(.5)
                 st.experimental_rerun()
             return 0
         else:
@@ -450,7 +447,7 @@ def main(N):
         add = display_question(pronom, verb, tense, reponse)
         if add:
             points += 1
-            time.sleep(1)
+            time.sleep(2)
             st.experimental_rerun()
     else:
         st.markdown('---')
@@ -490,6 +487,11 @@ def generate_questions(verbs, tenses, N):
 ################################################################
 st.set_page_config(layout="wide")
 
+if 'conjuaisons' not in st.session_state:
+    conjugaisons = load_verbs()
+    st.session_state['conjuaisons'] = conjugaisons
+
+conjugaisons = st.session_state['conjuaisons']
 
 start = st.empty()
 s_cont = start.container()
