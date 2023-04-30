@@ -332,6 +332,7 @@ def pick_entry(pronom, verb, tense):
         return conj[_pronom]
 
     if tense == 'impératif passé':
+        _pronom = map_pronom_imperatif[pronom.lower()]
         conj = conjugaisons[participes[verb]]["imperative present"]
         conj2 = conjugaisons[verb]["participle past"]
         if len(conj2) == 1:
@@ -347,7 +348,7 @@ def pick_entry(pronom, verb, tense):
         return conj[_pronom]
 
     if tense == 'subjonctif passé':
-        conj = conjugaisons[participes[verb]]["subjonctive present"]
+        conj = conjugaisons[participes[verb]]["subjunctive present"]
         conj2 = conjugaisons[verb]["participle past"]
         if len(conj2) == 1:
             return conj[_pronom] + " " + conj2[0]
@@ -382,13 +383,13 @@ def find_answer(verb, pronom, tense):
         reponse = [r.strip() for r in reponse.split(',')]
         return reponse
     except Exception as err:
-        st.error(err)
+        st.error(type(err), err)
         st.error(f"error: {verb} {pronom} {tense}")
 
 ################################################################
 
 
-def display_question(pronom, verb, tense, reponse):
+def display_question(pronom, verb, tense, reponse, key=''):
 
     col1, col2 = st.columns(2)
     col1.success(verb)
@@ -399,7 +400,12 @@ def display_question(pronom, verb, tense, reponse):
         p = pronoms[pronom]
 
     st.success(p)
-    res = st.text_input('', placeholder='Ta réponse')
+
+    e = st.empty()
+    e.empty()
+    i = st.session_state['current_question']
+    res = e.text_input('', placeholder='Ta réponse',
+                       key=key+"reponse"+str(i))
 
     if res != '':
         if res.lower() not in reponse:
@@ -409,7 +415,7 @@ def display_question(pronom, verb, tense, reponse):
                 st.warning('solution: ' + ' ou '.join(reponse))
                 st.session_state['first_shot'] = 0
                 st.session_state['current_question'] += 1
-                time.sleep(.5)
+                time.sleep(2)
                 st.experimental_rerun()
             return 0
         else:
@@ -436,6 +442,7 @@ def main(N):
     i = st.session_state['current_question']
     questions = st.session_state['questions']
     verb, pronom, tense = questions[i]
+    reponse = find_answer(verb, pronom, tense)
 
     progress_text = f"question {i}/{N}"
     my_bar = st.progress(0, progress_text)
@@ -444,23 +451,15 @@ def main(N):
     points_bar = st.progress(0, points_text)
     points_bar.progress(points/N, text=points_text)
 
-    verb = verbs[verb]
-    reponse = find_answer(verb, pronom, tense)
-
     if 'first_shot' not in st.session_state:
         st.session_state['first_shot'] = 0
 
-    if not reponse:
-        st.session_state['current_question'] += 1
-        main(N)
-
-    elif st.session_state['current_question'] < len(questions):
-
+    if st.session_state['current_question'] < len(questions):
         add = display_question(pronom, verb, tense, reponse)
         if add:
             points += 1
             st.session_state['points'] = points
-            time.sleep(2)
+            time.sleep(.5)
             st.experimental_rerun()
     else:
         st.markdown('---')
@@ -484,27 +483,34 @@ def generate_questions(verbs, tenses, N):
         raise RuntimeError("not enough verbs")
 
     for i in range(0, N):
-        a = random.randint(0, Nverbs-1)
-        b = random.randint(0, 8)
-        c = random.randint(0, Ntenses-1)
+        verb = random.randint(0, Nverbs-1)
+        verb = verbs[verb]
+        pronom = random.randint(0, 8)
+        tense = random.randint(0, Ntenses-1)
 
-        while (a, b, c) in questions:
-            a = random.randint(0, Nverbs-1)
-            b = random.randint(0, 8)
-            c = random.randint(0, Ntenses-1)
+        while (verb, pronom, tense) in questions:
+            verb = random.randint(0, Nverbs-1)
+            verb = verbs[verb]
+            pronom = random.randint(0, 8)
+            tense = random.randint(0, Ntenses-1)
 
-        questions.add((a, b, c))
+        reponse = find_answer(verb, pronom, tense)
+        if not reponse:
+            st.error("reponse inexistante")
+            display_question(pronom, verb, tense, reponse, key='error')
+        questions.add((verb, pronom, tense))
+
     return [e for e in questions]
 
 
 ################################################################
 st.set_page_config(layout="wide")
 
-if 'conjuaisons' not in st.session_state:
+if 'conjugaisons' not in st.session_state:
     conjugaisons = load_verbs()
-    st.session_state['conjuaisons'] = conjugaisons
+    st.session_state['conjugaisons'] = conjugaisons
 
-conjugaisons = st.session_state['conjuaisons']
+conjugaisons = st.session_state['conjugaisons']
 
 start = st.empty()
 s_cont = start.container()
