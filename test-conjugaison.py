@@ -415,7 +415,7 @@ def display_question(pronom, verb, tense, reponse, key=''):
                 st.warning('solution: ' + ' ou '.join(reponse))
                 st.session_state['first_shot'] = 0
                 st.session_state['current_question'] += 1
-                time.sleep(2)
+                time.sleep(4)
                 st.experimental_rerun()
             return 0
         else:
