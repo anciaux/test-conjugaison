@@ -406,6 +406,7 @@ def display_question(pronom, verb, tense, reponse, key=''):
     i = st.session_state['current_question']
     res = e.text_input('', placeholder='Ta réponse',
                        key=key+"reponse"+str(i))
+    res = res.strip()
 
     if res != '':
         if res.lower() not in reponse:
@@ -415,8 +416,10 @@ def display_question(pronom, verb, tense, reponse, key=''):
                 st.warning('solution: ' + ' ou '.join(reponse))
                 st.session_state['first_shot'] = 0
                 st.session_state['current_question'] += 1
-                time.sleep(4)
-                st.experimental_rerun()
+                ok = st.button("prochaine question", type='primary',
+                               use_container_width=True)
+                if ok:
+                    st.experimental_rerun()
             return 0
         else:
             st.session_state['current_question'] += 1
