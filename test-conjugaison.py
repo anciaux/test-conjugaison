@@ -468,6 +468,18 @@ def main(N):
         st.write('## Ta note: ' + str(int(points/N*12)/2))
         st.markdown('---')
 
+    st.components.v1.html(
+        """
+        <div>some hidden container</div>
+        <script>
+            var input = window.parent.document.querySelectorAll("input[type=text]");
+            for (var i = 0; i < input.length; ++i) {{
+                input[i].focus();
+            }}
+    </script>
+    """,
+        height=0,
+    )
 
 ################################################################
 
