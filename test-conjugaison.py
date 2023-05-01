@@ -111,7 +111,7 @@ participes = {
     'pouvoir':  'avoir',
     'oublier':  'avoir',
     'prendre':  'avoir',
-    'sortir':   'être',
+    'sortir':   'avoir',
     'courir':  'avoir',
     'voir':     'avoir',
     'venir':    'être',
