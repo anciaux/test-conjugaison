@@ -555,14 +555,14 @@ verbs = s_cont.multiselect("Choisi les verbes à réviser",
 #           'subjonctif passé', 'indicatif futur antérieur',
 #           'impératif passé', 'conditionnel passé',
 #           'indicatif passé antérieur']
-tenses = tense_list
+selected_tense_list = tense_list
 
-for t in tenses:
+for t in selected_tense_list:
     if t not in tense_list:
         raise RuntimeError(f'we have a problem {t}')
 
 tenses = s_cont.multiselect("Choisi les temps à réviser",
-                            options=tense_list, default=tenses)
+                            options=tense_list, default=selected_tense_list)
 
 N = s_cont.number_input('Nombre de question', value=120)
 button = s_cont.button('Démarer le test')
