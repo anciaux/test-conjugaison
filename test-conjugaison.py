@@ -383,6 +383,7 @@ def find_answer(verb, pronom, tense):
         reponse = [r.strip() for r in reponse.split(',')]
         return reponse
     except Exception as err:
+        print(type(err), err)
         st.error(type(err), err)
         st.error(f"error: {verb} {pronom} {tense}")
 
@@ -531,13 +532,30 @@ conjugaisons = st.session_state['conjugaisons']
 start = st.empty()
 s_cont = start.container()
 
-verbs = s_cont.multiselect("Choisi les verbes à réviser",
-                           options=verb_list, default=verb_list)
+selected_verb_list = [
+    'faire',
+    'dire',
+    'pouvoir',
+    'aller',
+    'voir',
+    'vivre',
+    'écrire',
+    'lire'
+]
 
-tenses = ['indicatif passé composé', 'indicatif plus que parfait',
-          'subjonctif passé', 'indicatif futur antérieur',
-          'impératif passé', 'conditionnel passé',
-          'indicatif passé antérieur']
+for v in selected_verb_list:
+    if v not in verb_list:
+        raise RuntimeError(f'we have a problem {v}')
+
+
+verbs = s_cont.multiselect("Choisi les verbes à réviser",
+                           options=verb_list, default=selected_verb_list)
+
+# tenses = ['indicatif passé composé', 'indicatif plus que parfait',
+#           'subjonctif passé', 'indicatif futur antérieur',
+#           'impératif passé', 'conditionnel passé',
+#           'indicatif passé antérieur']
+tenses = tense_list
 
 for t in tenses:
     if t not in tense_list:
@@ -546,8 +564,7 @@ for t in tenses:
 tenses = s_cont.multiselect("Choisi les temps à réviser",
                             options=tense_list, default=tenses)
 
-N = s_cont.number_input('Nombre de question', value=60)
-
+N = s_cont.number_input('Nombre de question', value=120)
 button = s_cont.button('Démarer le test')
 if 'started' not in st.session_state:
     st.session_state['started'] = False
