@@ -7,6 +7,14 @@ import streamlit as st
 import time
 ################################################################
 
+
+class InexistingForm(RuntimeError):
+    def __init__(self, pronom, verb, tense):
+        super().__init__(f"Unknown form for: {pronom} {verb} {tense}")
+
+################################################################
+
+
 tense_list = [
     'indicatif présent',
     'indicatif passé composé',
@@ -258,119 +266,94 @@ def replace_for_imperatif(pronom):
         return '(vous)'
     raise RuntimeError('pronom indéfini')
 
+
+################################################################
+map_direct_tenses = {
+    'indicatif présent': "indicative present",
+    'indicatif imparfait': "indicative imperfect",
+    'indicatif futur': "indicative future",
+    'indicatif passé simple': "indicative past",
+    'conditionnel présent': "conditional present",
+    'impératif présent': "imperative present",
+    'subjonctif imparfait': "subjunctive imperfect",
+    'subjonctif présent': "subjunctive present"
+}
+
+
+map_tense_map_pronom = {
+    'indicatif présent': map_pronom,
+    'indicatif imparfait': map_pronom,
+    'indicatif futur': map_pronom,
+    'indicatif passé simple': map_pronom,
+    'indicatif passé composé': map_pronom,
+    'indicatif passé antérieur': map_pronom,
+    'indicatif futur antérieur': map_pronom,
+    'indicatif plus que parfait': map_pronom,
+    'conditionnel présent': map_pronom,
+    'conditionnel passé': map_pronom,
+    'subjonctif présent': map_pronom,
+    'subjonctif imparfait': map_pronom,
+    'subjonctif passé': map_pronom,
+    'impératif présent': map_pronom_imperatif,
+    'impératif passé': map_pronom_imperatif,
+}
+
+
+def find_direct_form(pronom, verb, tense):
+    _map_pronom = map_tense_map_pronom[tense]
+    _pronom = _map_pronom[pronom.lower()]
+    _tense = map_direct_tenses[tense]
+    _conj = conjugaisons[verb][_tense]
+    try:
+        form = _conj[_pronom]
+    except IndexError:
+        raise InexistingForm(pronom, verb, tense)
+    return form
+
+
+map_passive_tenses = {
+    'indicatif passé composé': "indicative present",
+    'indicatif futur antérieur': "indicative future",
+    'indicatif plus que parfait': "indicative imperfect",
+    'conditionnel passé': "conditional present",
+    'impératif passé': "imperative present",
+    'subjonctif passé': "subjunctive present",
+    'indicatif passé antérieur': "indicative past"
+}
+
+
+def find_passive_form(pronom, verb, tense):
+    print(pronom, verb, tense)
+    _tense = map_passive_tenses[tense]
+    _map_pronom = map_tense_map_pronom[tense]
+    _pronom = _map_pronom[pronom.lower()]
+    conj = conjugaisons[participes[verb]][_tense]
+    conj2 = conjugaisons[verb]["participle past"]
+    print(_tense, _pronom, conj, conj2)
+    if len(conj2) == 1:
+        return conj[_pronom] + " " + conj2[0]
+    if participes[verb] == 'avoir':
+        return conj[_pronom] + " " + conj2[0]
+    __pronom = map_pronom_participe[pronom]
+    try:
+        form = conj[_pronom] + " " + conj2[__pronom]
+    except IndexError:
+        raise InexistingForm(pronom, verb, tense)
+    return form
+
+
 ################################################################
 
 
 def pick_entry(pronom, verb, tense):
-    if isinstance(pronom, str):
-        _pronom = map_pronom[pronom.lower()]
+    # if isinstance(pronom, str):
+    #     _pronom = map_pronom[pronom.lower()]
 
-    if tense == 'indicatif présent':
-        conj = conjugaisons[verb]["indicative present"]
-        return conj[_pronom]
+    if tense in map_direct_tenses:
+        return find_direct_form(pronom, verb, tense)
 
-    if tense == 'indicatif passé composé':
-        conj = conjugaisons[participes[verb]]["indicative present"]
-        conj2 = conjugaisons[verb]["participle past"]
-        if len(conj2) == 1:
-            return conj[_pronom] + " " + conj2[0]
-        if participes[verb] == 'avoir':
-            return conj[_pronom] + " " + conj2[0]
-        __pronom = map_pronom_participe[pronom]
-        return conj[_pronom] + " " + conj2[__pronom]
-
-    if tense == 'indicatif futur antérieur':
-        conj = conjugaisons[participes[verb]]["indicative future"]
-        conj2 = conjugaisons[verb]["participle past"]
-        if len(conj2) == 1:
-            return conj[_pronom] + " " + conj2[0]
-        if participes[verb] == 'avoir':
-            return conj[_pronom] + " " + conj2[0]
-        __pronom = map_pronom_participe[pronom]
-        return conj[_pronom] + " " + conj2[__pronom]
-
-    if tense == 'indicatif plus que parfait':
-        conj = conjugaisons[participes[verb]]["indicative imperfect"]
-        conj2 = conjugaisons[verb]["participle past"]
-        if len(conj2) == 1:
-            return conj[_pronom] + " " + conj2[0]
-        if participes[verb] == 'avoir':
-            return conj[_pronom] + " " + conj2[0]
-        __pronom = map_pronom_participe[pronom]
-        return conj[_pronom] + " " + conj2[__pronom]
-
-    if tense == 'indicatif imparfait':
-        conj = conjugaisons[verb]["indicative imperfect"]
-        return conj[_pronom]
-
-    if tense == 'indicatif futur':
-        conj = conjugaisons[verb]["indicative future"]
-        return conj[_pronom]
-
-    if tense == 'indicatif passé simple':
-        conj = conjugaisons[verb]["indicative past"]
-        return conj[_pronom]
-
-    if tense == 'conditionnel présent':
-        conj = conjugaisons[verb]["conditional present"]
-        return conj[_pronom]
-
-    if tense == 'conditionnel passé':
-        conj = conjugaisons[participes[verb]]["conditional present"]
-        conj2 = conjugaisons[verb]["participle past"]
-        if len(conj2) == 1:
-            return conj[_pronom] + " " + conj2[0]
-        if participes[verb] == 'avoir':
-            return conj[_pronom] + " " + conj2[0]
-        __pronom = map_pronom_participe[pronom]
-        return conj[_pronom] + " " + conj2[__pronom]
-        return conj[_pronom]
-
-    if tense == 'impératif présent':
-        _pronom = map_pronom_imperatif[pronom.lower()]
-        conj = conjugaisons[verb]["imperative present"]
-        return conj[_pronom]
-
-    if tense == 'impératif passé':
-        _pronom = map_pronom_imperatif[pronom.lower()]
-        conj = conjugaisons[participes[verb]]["imperative present"]
-        conj2 = conjugaisons[verb]["participle past"]
-        if len(conj2) == 1:
-            return conj[_pronom] + " " + conj2[0]
-        if participes[verb] == 'avoir':
-            return conj[_pronom] + " " + conj2[0]
-        __pronom = map_pronom_participe[pronom]
-        return conj[_pronom] + " " + conj2[__pronom]
-
-    if tense == 'subjonctif présent':
-        _pronom = map_pronom_imperatif[pronom.lower()]
-        conj = conjugaisons[verb]["subjunctive present"]
-        return conj[_pronom]
-
-    if tense == 'subjonctif passé':
-        conj = conjugaisons[participes[verb]]["subjunctive present"]
-        conj2 = conjugaisons[verb]["participle past"]
-        if len(conj2) == 1:
-            return conj[_pronom] + " " + conj2[0]
-        if participes[verb] == 'avoir':
-            return conj[_pronom] + " " + conj2[0]
-        __pronom = map_pronom_participe[pronom]
-        return conj[_pronom] + " " + conj2[__pronom]
-
-    if tense == 'subjonctif imparfait':
-        _pronom = map_pronom_imperatif[pronom.lower()]
-        conj = conjugaisons[verb]["subjunctive imperfect"]
-        return conj[_pronom]
-
-    if tense == 'indicatif passé antérieur':
-        conj = conjugaisons[participes[verb]]["indicative past"]
-        conj2 = conjugaisons[verb]["participle past"]
-        if len(conj2) == 1:
-            return conj[_pronom] + " " + conj2[0]
-        if participes[verb] == 'avoir':
-            return conj[_pronom] + " " + conj2[0]
-        __pronom = map_pronom_participe[pronom]
-        return conj[_pronom] + " " + conj2[__pronom]
+    if tense in map_passive_tenses:
+        return find_passive_form(pronom, verb, tense)
 
     raise RuntimeError(f"temps inconnu: {tense}")
 
@@ -378,14 +361,9 @@ def pick_entry(pronom, verb, tense):
 
 
 def find_answer(verb, pronom, tense):
-    try:
-        reponse = pick_entry(pronoms[pronom], verb, tenses[tense])
-        reponse = [r.strip() for r in reponse.split(',')]
-        return reponse
-    except Exception as err:
-        print(type(err), err)
-        st.error(type(err), err)
-        st.error(f"error: {verb} {pronom} {tense}")
+    reponse = pick_entry(pronoms[pronom], verb, tenses[tense])
+    reponse = [r.strip() for r in reponse.split(',')]
+    return reponse
 
 ################################################################
 
@@ -404,7 +382,10 @@ def display_question(pronom, verb, tense, reponse, key=''):
 
     e = st.empty()
     e.empty()
-    i = st.session_state['current_question']
+    if 'current_question' in st.session_state:
+        i = st.session_state['current_question']
+    else:
+        i = -1
     res = e.text_input('', placeholder='Ta réponse',
                        key=key+"reponse"+str(i))
     res = res.strip()
@@ -492,11 +473,11 @@ def generate_questions(verbs, tenses, N):
 
     random.seed()
     questions = set()
-    verbs = list(conjugaisons.keys())
     Nverbs = len(verbs)
     Ntenses = len(tenses)
 
     if N > Nverbs*len(pronoms)*Ntenses:
+        st.error("Pas assez de verbes")
         raise RuntimeError("not enough verbs")
 
     for i in range(0, N):
@@ -511,10 +492,11 @@ def generate_questions(verbs, tenses, N):
             pronom = random.randint(0, 8)
             tense = random.randint(0, Ntenses-1)
 
-        reponse = find_answer(verb, pronom, tense)
-        if not reponse:
-            st.error("reponse inexistante")
-            display_question(pronom, verb, tense, reponse, key='error')
+        try:
+            find_answer(verb, pronom, tense)
+        except InexistingForm as err:
+            print(err)
+            continue
         questions.add((verb, pronom, tense))
 
     return [e for e in questions]
@@ -574,5 +556,6 @@ if button or st.session_state['started']:
     start.empty()
     if 'questions' not in st.session_state:
         questions = generate_questions(verbs, tenses, N)
+        # print(questions)
         st.session_state['questions'] = questions
     main(N)
