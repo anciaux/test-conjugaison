@@ -161,7 +161,6 @@ def find_answers(verb, tenses):
 
 
 def display_question(verb, tenses, given_tense, responses, key=''):
-    st.success(verb)
     cols = st.columns(len(tenses))
 
     if 'current_question' in st.session_state:
