@@ -179,16 +179,15 @@ def display_question(verb, tenses, given_tense, responses, key=''):
         elif tense == 'Infinitif':
             _tense = 'Traduction'
 
-        col.success(_tense)
+        # col.success(_tense)
         # col.write(given_tense)
         # col.write(tense_list)
         if tense == tense_list[given_tense]:
-            col.text_input(tense, placeholder=response, disabled=True,
-                           key=key+"reponse"+str(i)+tense,
-                           label_visibility='hidden')
+            col.text_input(_tense, placeholder=response, disabled=True,
+                           key=key+"reponse"+str(i)+tense)
             res = response
         else:
-            res = col.text_input('', placeholder='Ta réponse',
+            res = col.text_input(_tense, placeholder='Ta réponse',
                                  key=key+"reponse"+str(i)+tense,
                                  )
         res = res.strip()
