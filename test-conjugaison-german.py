@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 ################################################################
-# import os
-import random
-import streamlit as st
-import time
 import pandas as pd
+import time
+import streamlit as st
+import random
+# import os
 ################################################################
 
 
@@ -361,6 +361,11 @@ selected_verb_list = [
     'steigen',
     'sterben',
     'streiten',
+    'tragen',
+    'treffen',
+    'treiben',
+    'trinken',
+    'tun'
 ]
 
 # _df = df[df['Infinitiv'].isin(selected_verb_list)]
