@@ -2,7 +2,6 @@
 ################################################################
 # import os
 import random
-import subprocess
 import streamlit as st
 import time
 import pandas as pd
@@ -334,8 +333,38 @@ selected_verb_list = [
     'brechen',
     'einladen',
     'empfehlen',
-    'essen'
+    'essen',
+    'fahren',
+    'fallen',
+    'fangen',
+    'finden',
+    'fliehen',
+    'fliegen',
+    'geben',
+    'gehen',
+    'halten',
+    'hängen',
+    'helfen',
+    'gewinnen',
+    'kommen',
+    'rufen',
+    'schlafen',
+    'schließen',
+    'schreiben',
+    'schwimmen',
+    'sehen',
+    'sein',
+    'singen',
+    'sitzen',
+    'sprechen',
+    'stehen',
+    'steigen',
+    'sterben',
+    'streiten',
 ]
+
+# _df = df[df['Infinitiv'].isin(selected_verb_list)]
+# st.dataframe(_df)
 
 for v in selected_verb_list:
     if v not in verb_list:
@@ -358,7 +387,7 @@ for t in selected_tense_list:
 tenses = s_cont.multiselect("Choisi les temps à réviser",
                             options=tense_list, default=selected_tense_list)
 
-N = s_cont.number_input('Nombre de question', value=5)
+N = s_cont.number_input('Nombre de question', value=len(selected_verb_list))
 button = s_cont.button('Démarer le test')
 if 'started' not in st.session_state:
     st.session_state['started'] = False
