@@ -48,13 +48,14 @@ df.rename(columns=lambda x: x.strip(), inplace=True)
 #     df.loc[i, ('Infinitif',)] = infinitif.text
 # df.to_csv('german_verbs.csv')
 
-st.dataframe(df)
+# st.dataframe(df)
 
 tense_list = [
+    'Infinitiv',
     'Präsens',
     # 'Präteritum',
     'Perfekt',
-    'Infinitif'
+    'Infinitif',
     #    'Partizip',
     #    'Konjunctive',
     #    'Imperative Singular'
@@ -102,7 +103,8 @@ def replace_for_imperatif(pronom):
 map_tense = {
     'Präsens': 'Präsens_er,sie,es',
     'Präteritum': 'Präteritum_ich',
-    'Infinitif': 'Infinitif'
+    'Infinitif': 'Infinitif',
+    'Infinitiv': 'Infinitiv'
 }
 
 
@@ -129,7 +131,7 @@ def find_passive_form(verb, tense):
     conj2 = df[df['Infinitiv'] == conj2]
     conj2 = conj2['Präsens_er,sie,es'].iloc[0]
     try:
-        form = conj + " " + conj2
+        form = conj2 + " " + conj
     except IndexError:
         raise InexistingForm(verb, tense)
     return form
@@ -170,14 +172,22 @@ def display_question(verb, tenses, given_tense, responses, key=''):
 
     results = []
     for col, tense, response in zip(cols, tenses, responses):
-        col.success(tense)
-        e = st.empty()
-        e.empty()
+        if tense == 'Präsens':
+            _tense = 'Présent (er)'
+        elif tense == 'Perfekt':
+            _tense = 'Parfait (er)'
+        elif tense == 'Infinitiv':
+            _tense = 'Infinitif (Allemand)'
+        elif tense == 'Infinitif':
+            _tense = 'Traduction'
+
+        col.success(_tense)
         # col.write(given_tense)
         # col.write(tense_list)
         if tense == tense_list[given_tense]:
             col.text_input(tense, placeholder=response, disabled=True,
-                           key=key+"reponse"+str(i)+tense)
+                           key=key+"reponse"+str(i)+tense,
+                           label_visibility='hidden')
             res = response
         else:
             res = col.text_input('', placeholder='Ta réponse',
@@ -187,31 +197,39 @@ def display_question(verb, tenses, given_tense, responses, key=''):
         results.append(res)
 
     score = 0
-    for col, response, result in zip(cols, responses, results):
+    for col, tense, response, result in zip(cols, tenses, responses, results):
+        response = response.lower().strip()
+        result = result.lower().strip()
+        # col.write(response)
+        # col.write(result)
         if response != result and result != '':
             st.session_state['first_shot'] += 1
-            if st.session_state['first_shot'] == 2:
-                col.success(response)
-                st.session_state['first_shot'] = 0
-                st.session_state['current_question'] += 1
-                ok = st.button("prochaine question", type='primary',
-                               use_container_width=True)
-                if ok:
-                    st.session_state['points'] += score
-                    st.experimental_rerun()
-        elif response == result:
-            col.success(result)
+            col.error('Non!')
+        elif response == result and tense != tense_list[given_tense]:
+            col.success('OK')
             if st.session_state['first_shot'] == 0:
                 score += 1
-    if score == len(result):
+    # st.markdown(
+    #    f'score: {score} {len(results)} {results} {st.session_state["first_shot"]}')
+    if score == len(results)-1:
         st.session_state['current_question'] += 1
         st.success("bravo!!!")
         st.session_state['first_shot'] = 0
-        st.session_state['points'] += score
+        st.session_state['points'] += 1
         time.sleep(.5)
         st.experimental_rerun()
+    elif st.session_state['first_shot'] >= 2:
+        st.markdown('---\n\nReponse')
+        cols = st.columns(len(tenses))
+        for col, response in zip(cols, responses):
+            col.warning(response)
+        st.session_state['first_shot'] = 0
+        st.session_state['current_question'] += 1
+        ok = st.button("prochaine question", type='primary',
+                       use_container_width=True)
+        if ok:
+            st.experimental_rerun()
 
-    return score
 
 ################################################################
 
@@ -245,7 +263,8 @@ def main(N):
 
     else:
         st.markdown('---')
-        st.write('## Points: ' + str(points) + '/' + str(N))
+        st.write('## Points: ' + str(points) +
+                 '/' + str(N))
         st.write('## Ta note: ' + str(int(points/N*12)/2))
         st.markdown('---')
 
