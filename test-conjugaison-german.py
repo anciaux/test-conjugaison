@@ -168,6 +168,8 @@ def find_answers(verb, tenses):
 
 
 def display_question(verb, tenses, given_tense, responses, key=''):
+    st.warning("Il faut écrire 'Ss' pour le caractère 'ß'")
+
     cols = st.columns(len(tenses))
 
     if 'current_question' in st.session_state:
@@ -201,7 +203,6 @@ def display_question(verb, tenses, given_tense, responses, key=''):
         results.append(res)
 
     score = 0
-    st.warning("Il faut écrire 'Ss' pour le caractère 'ß'")
     for col, tense, response, result in zip(cols, tenses, responses, results):
         response = response.lower().strip()
         response = [e.strip() for e in response.split(',')]
