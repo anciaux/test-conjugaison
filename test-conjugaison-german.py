@@ -233,8 +233,8 @@ def display_question(verb, tenses, given_tense, responses, key=''):
                        use_container_width=True)
         if ok:
             st.experimental_rerun()
-    st.markdown(
-        f'score: {score} {len(results)} {results} {st.session_state["first_shot"]}')
+    # st.markdown(
+    #    f'score: {score} {len(results)} {results} {st.session_state["first_shot"]}')
 
 
 ################################################################
