@@ -191,6 +191,7 @@ def display_question(verb, tenses, given_tense, responses, key=''):
         col.markdown(tense)
         col.markdown(_tense)
         col.markdown(response)
+        col.markdown(responses)
         # col.write(given_tense)
         # col.write(tense_list)
         if tense == tense_list[given_tense]:
