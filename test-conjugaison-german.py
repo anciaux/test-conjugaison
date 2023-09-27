@@ -371,6 +371,7 @@ selected_verb_list = [
 
 with st.expander('full data'):
     _df = df[df['Infinitiv'].isin(selected_verb_list)]
+    _df = _df.sort_values('Infinitiv', )
     st.dataframe(_df)
 
 for v in selected_verb_list:
