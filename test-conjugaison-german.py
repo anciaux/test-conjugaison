@@ -163,6 +163,7 @@ def pick_entry(verb, tenses):
 def find_answers(verb, tenses):
     verb = df[df['Infinitiv'] == verb]
     reponse = pick_entry(verb, tenses)
+    st.write(f'BBBB {reponse}')
     return reponse
 
 ################################################################
