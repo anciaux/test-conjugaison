@@ -214,8 +214,7 @@ def display_question(verb, tenses, given_tense, responses, key=''):
             col.error('Non!')
         elif (result in response or result == ','.join(response)) and tense != tense_list[given_tense]:
             col.success('OK')
-            if st.session_state['first_shot'] == 0:
-                score += 1
+            score += 1
     if score >= len(results)-1:
         st.session_state['current_question'] += 1
         st.success("bravo!!!")
