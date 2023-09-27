@@ -203,13 +203,16 @@ def display_question(verb, tenses, given_tense, responses, key=''):
     score = 0
     for col, tense, response, result in zip(cols, tenses, responses, results):
         response = response.lower().strip()
+        response = [e.strip() for e in response.split(',')]
         result = result.lower().strip()
+        result = [e.strip() for e in result.split(',')]
+        result = ','.join(result)
         # col.write(response)
         # col.write(result)
-        if response != result and result != '':
+        if result not in response and result != ','.join(response) and result != '':
             st.session_state['first_shot'] += 1
             col.error('Non!')
-        elif response == result and tense != tense_list[given_tense]:
+        elif (result in response or result == ','.join(response)) and tense != tense_list[given_tense]:
             col.success('OK')
             if st.session_state['first_shot'] == 0:
                 score += 1
@@ -375,6 +378,8 @@ selected_verb_list = [
     'trinken',
     'tun'
 ]
+
+selected_verb_list = ['treiben']
 
 with st.expander('full data'):
     _df = df[df['Infinitiv'].isin(selected_verb_list)]
