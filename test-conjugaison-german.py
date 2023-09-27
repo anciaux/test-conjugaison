@@ -148,7 +148,6 @@ def find_passive_form(verb, tense):
 
 def pick_entry(verb, tenses):
     res = []
-    st.write(f'AAAA {tenses}')
     for tense in tenses:
         # tense = tense_list[tense]
         if tense != 'Perfekt':
@@ -163,7 +162,6 @@ def pick_entry(verb, tenses):
 def find_answers(verb, tenses):
     verb = df[df['Infinitiv'] == verb]
     reponse = pick_entry(verb, tenses)
-    st.write(f'BBBB {reponse}')
     return reponse
 
 ################################################################
@@ -190,12 +188,6 @@ def display_question(verb, tenses, given_tense, responses, key=''):
         elif tense == 'Infinitif':
             _tense = 'Traduction'
 
-        col.markdown(tense)
-        col.markdown(_tense)
-        col.markdown(response)
-        col.markdown(responses)
-        # col.write(given_tense)
-        # col.write(tense_list)
         if tense == tense_list[given_tense]:
             col.text_input(_tense, placeholder=response, disabled=True,
                            key=key+"reponse"+str(i)+tense)
@@ -269,8 +261,8 @@ def main(N):
 
     if st.session_state['current_question'] < len(questions):
         verb, given_tense = questions[i]
-        reponses = find_answers(verb, tense_list)
-        display_question(verb, tenses, given_tense, reponses)
+        reponses = find_answers(verb, selected_tense_list)
+        display_question(verb, selected_tense_list, given_tense, reponses)
 
     else:
         st.markdown('---')
@@ -393,18 +385,9 @@ for v in selected_verb_list:
 verbs = s_cont.multiselect("Choisi les verbes à réviser",
                            options=verb_list, default=selected_verb_list)
 
-# tenses = ['indicatif passé composé', 'indicatif plus que parfait',
-#           'subjonctif passé', 'indicatif futur antérieur',
-#           'impératif passé', 'conditionnel passé',
-#           'indicatif passé antérieur']
-selected_tense_list = tense_list
-
-for t in selected_tense_list:
-    if t not in tense_list:
-        raise RuntimeError(f'we have a problem {t}')
-
-tenses = s_cont.multiselect("Choisi les temps à réviser",
-                            options=tense_list, default=selected_tense_list)
+selected_tense_list = s_cont.multiselect(
+    "Choisi les temps à réviser",
+    options=tense_list, default=tense_list)
 
 N = s_cont.number_input('Nombre de question', value=len(
     selected_verb_list))
@@ -421,7 +404,7 @@ if button or st.session_state['started']:
     st.session_state['started'] = True
     start.empty()
     if 'questions' not in st.session_state:
-        questions = generate_questions(verbs, tenses, N)
+        questions = generate_questions(verbs, selected_tense_list, N)
         # print(questions)
         st.session_state['questions'] = questions
     main(N)
