@@ -356,6 +356,8 @@ selected_verb_list = [
     #     'kommen',
     'rufen',
     'schlafen',
+    'schießen',
+    'schlagen',
     'schließen',
     'schreiben',
     'schwimmen',
