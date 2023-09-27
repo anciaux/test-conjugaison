@@ -207,8 +207,6 @@ def display_question(verb, tenses, given_tense, responses, key=''):
         result = result.lower().strip().replace('Ss', 'ß')
         result = [e.strip() for e in result.split(',')]
         result = ','.join(result)
-        st.session_state[key+"reponse"+str(i)+tense] = result
-        # col.write(result)
         if result not in response and result != ','.join(response) and result != '':
             st.session_state['first_shot'] += 1
             col.error('Non!')
