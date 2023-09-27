@@ -208,7 +208,7 @@ def display_question(verb, tenses, given_tense, responses, key=''):
                 score += 1
     # st.markdown(
     #    f'score: {score} {len(results)} {results} {st.session_state["first_shot"]}')
-    if score == len(results)-1:
+    if score >= len(results)-1:
         st.session_state['current_question'] += 1
         st.success("bravo!!!")
         st.session_state['first_shot'] = 0
