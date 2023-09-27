@@ -292,7 +292,7 @@ def generate_questions(verbs, tenses, N):
     random.seed()
     questions = set()
     Nverbs = len(verbs)
-    Ntenses = len(tense_list)
+    Ntenses = len(tenses)
 
     if N > Nverbs:
         st.error("Pas assez de verbes")
