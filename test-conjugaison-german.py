@@ -119,18 +119,25 @@ def find_direct_form(verb, tense):
 
 
 map_passive_tenses = {
-    'Perfekt': ("Partizip II", "Hilfsverb")
+    'Perfekt': ("Partizip II", "Hilfsverb", "Hilfsverb*")
 }
 
 
 def find_passive_form(verb, tense):
-    tense, aux = map_passive_tenses[tense]
+    tense, aux1, aux2 = map_passive_tenses[tense]
     conj = verb[tense].iloc[0]
-    conj2 = verb[aux].iloc[0]
-    conj2 = df[df['Infinitiv'] == conj2]
-    conj2 = conj2['Präsens_er,sie,es'].iloc[0]
+    aux1 = verb[aux1].iloc[0]
+    aux1 = df[df['Infinitiv'] == aux1]
+    aux1 = aux1['Präsens_er,sie,es'].iloc[0]
+    aux2 = verb[aux2].iloc[0]
+    if not isinstance(aux2, float):
+        aux2 = df[df['Infinitiv'] == aux2]
+        aux2 = aux2['Präsens_er,sie,es'].iloc[0]
+        aux2 = '/' + aux2
+    else:
+        aux2 = ''
     try:
-        form = conj2 + " " + conj
+        form = aux1 + aux2 + " " + conj
     except IndexError:
         raise InexistingForm(verb, tense)
     return form
@@ -361,7 +368,7 @@ selected_verb_list = [
     'stehen',
     'steigen',
     'sterben',
-    'streiten',
+    'sich streiten',
     'tragen',
     'treffen',
     'treiben',

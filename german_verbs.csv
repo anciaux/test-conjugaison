@@ -6,12 +6,12 @@
 4,können,kann,,kannst,,kann,konnte,,gekonnt,,könnte,,—,,,—,,haben,,,,,,,peut
 5,meinen,meine,,meinst,,meint,meinte,,gemeint,,meinte,,meine,,,meint,,haben,,,,,,,signifier
 6,wollen,will,,willst,,will,wollte,,gewollt,wollen,wollte,,—,,,—,,haben,,,,,,,vouloir
-7,gehen,gehe,,gehst,,geht,ging,,gegangen,,ginge,,geh,gehe,,geht,gehet,sein,,Blender3D NormalWalkCycle.gif|mini|1|Animation einer ''gehenden'' Person,,,,,aller
+7,gehen,gehe,,gehst,,geht,ging,,gegangen,,ginge,,geh,gehe,,geht,gehet,sein,,Blender3D NormalWalkCycle.gif|mini|1|Animation einer ''gehenden'' Person,,,,,"aller,marcher"
 8,sagen,sage,,sagst,,sagt,sagte,,gesagt,,sagte,,sag,sage,,sagt,,haben,,,,,,,dire
 9,sehen,sehe,,siehst,,sieht,sah,,gesehen,sehen,sähe,,siehe,sieh,,seht,,haben,,,,,,,voir
 10,machen,mache,,machst,,macht,machte,,gemacht,,machte,,mache,mach,,macht,,haben,,,,,,,faire
 11,tun,tue,tu,tust,,tut,tat,,getan,,täte,,tue,tu,,tut,,haben,,,,,,,faire
-12,kommen,komme,,kommst,,kommt,kam,,gekommen,,käme,,komm,komme,,kommt,,sein,,,,,,,viens
+12,kommen,komme,,kommst,,kommt,kam,,gekommen,,käme,,komm,komme,,kommt,,sein,,,,,,,venir
 13,geben,gebe,,gibst,,gibt,gab,,gegeben,,gäbe,,gib,,,gebt,,haben,,,,,,,donner
 14,wissen,weiß,,weißt,,weiß,wusste,,gewusst,,wüsste,,wisse,,,wisset,wisst,haben,,,,,,,connaissance
 15,sollen,soll,,sollst,,soll,sollte,,gesollt,sollen,sollte,,—,,,—,,haben,,,,,,,devrait
@@ -30,7 +30,7 @@
 28,sichern,sichere,,sicherst,,sichert,sicherte,,gesichert,,sicherte,,sichere,,,sichert,,haben,,,,,,,pour sauvegarder
 29,fragen,frage,,fragst,frägst,fragt,fragte,frug,gefragt,,fragte,früge,frag,frage,,fragt,,haben,,,,,,,des questions
 30,kennen,kenne,,kennst,,kennt,kannte,,gekannt,,kennte,,kenne,kenn,,kennt,,haben,,,,,,,savoir
-31,helfen,helfe,,hilfst,,hilft,half,,geholfen,,hülfe,hälfe,hilf,,,helft,,haben,,,,,,,aide
+31,helfen,helfe,,hilfst,,hilft,half,,geholfen,,hülfe,hälfe,hilf,,,helft,,haben,,,,,,,aider
 32,reden,rede,,redest,,redet,redete,,geredet,,redete,,red,rede,,redet,,haben,,,,,,,parler
 33,stehen,stehe,,stehst,,steht,stand,,gestanden,,stünde,stände,stehe,steh,,steht,,haben,sein,,,,,,être debout
 34,bleiben,bleibe,,bleibst,,bleibt,blieb,,geblieben,,bliebe,,bleibe,bleib,,bleibt,,sein,,,,,,,rester
@@ -38,10 +38,10 @@
 36,sprechen,spreche,,sprichst,,spricht,sprach,,gesprochen,,spräche,,sprich,,,sprecht,,haben,,,,,,,parler
 37,passieren,passiere,,passierst,,passiert,passierte,,passiert,,passierte,,passiere,passier,,passiert,,haben,sein,,,,,,arriver
 38,dürfen,darf,,darfst,,darf,durfte,,gedurft,,dürfte,,—,,,—,,haben,,,,,,,peut
-39,halten,halte,,hältst,,hält,hielt,,gehalten,,hielte,,halt,halte,,haltet,,haben,,Keller saves PK attempt by Henry.ogv|thumb|10|Der [[Torwart]] hat den [[Elfmeter]] ''gehalten.'',,,,,prise
+39,halten,halte,,hältst,,hält,hielt,,gehalten,,hielte,,halt,halte,,haltet,,haben,,Keller saves PK attempt by Henry.ogv|thumb|10|Der [[Torwart]] hat den [[Elfmeter]] ''gehalten.'',,,,,"garder,tenir"
 40,töten,töte,,tötest,,tötet,tötete,,getötet,,tötete,,töte,,,tötet,,haben,,,,,,,tuer
 41,sterben,sterbe,,stirbst,,stirbt,starb,,gestorben,,stürbe,,stirb,,,sterbt,,sein,,,,,,,mourir
-42,fahren,fahre,,fährst,,fährt,fuhr,,gefahren,,führe,,fahr,fahre,,fahrt,,sein,haben,,,,,,conduire
+42,fahren,fahre,,fährst,,fährt,fuhr,,gefahren,,führe,,fahr,fahre,,fahrt,,sein,haben,,,,,,"aller,conduire"
 43,bekommen,bekomme,,bekommst,,bekommt,bekam,,bekommen,,bekäme,,bekomm,bekomme,,bekommt,,haben,sein,,,,,,recevoir
 44,arbeiten,arbeite,,arbeitest,,arbeitet,arbeitete,,gearbeitet,,arbeitete,,arbeite,,,arbeitet,,haben,,,Velden Christkindlmarkt Schmied Demo 16122007 21.jpg|mini|1|der Schmied ''arbeitet'',Street Craftsman in Olinda.jpg|thumb|1|Ein [[Handwerker]] ''arbeitet'' auf der [[Straße]].,Flens Flaschenbefüllung.jpg|mini|2|die Flaschenbefüllung ''arbeitet'' wieder,"16 inch wide oak flooring.jpeg|mini|4|Fugen entstehen, wenn das Holz ''arbeitet''",travail
 45,verdammen,verdamme,,verdammst,,verdammt,verdammte,,verdammt,,verdammte,,verdamm,verdamme,,verdammt,,haben,,,,,,,condamner
@@ -68,7 +68,7 @@
 66,stunden,stunde,,stundest,,stundet,stundete,,gestundet,,stundete,,stunde,,,stundet,,haben,,,,,,,heures
 67,entschuldigen,entschuldige,,entschuldigst,,entschuldigt,entschuldigte,,entschuldigt,,entschuldigte,,entschuldige,,,entschuldigt,,haben,,,,,,,excuse
 68,schlafen,schlafe,,schläfst,,schläft,schlief,,geschlafen,,schliefe,,schlaf,schlafe,,schlaft,,haben,,,"Anker Schlafender Knabe im Heu.jpg|thumb|1a|[[Gemälde]] von einem [[Junge]]n, der im Heu ''schläft.''",Sleeping wire-haired Dachshund.jpg|thumb|1a|Ein [[Rauhaardackel]] ''schläft'' in der [[Sonne]].,Lateral sex.jpg|thumb|3a|[[Mann]] und [[Frau]] ''schlafen'' [[miteinander]].,,dormir
-69,fallen,falle,,fällst,,fällt,fiel,,gefallen,,fiele,,falle,fall,,fallt,,sein,,,,,,,automne
+69,fallen,falle,,fällst,,fällt,fiel,,gefallen,,fiele,,falle,fall,,fallt,,sein,,,,,,,tomber
 70,verschwinden,verschwinde,,verschwindest,,verschwindet,verschwand,,verschwunden,,verschwände,,verschwinde,,,verschwindet,,sein,,,,,,,disparaître
 71,vergessen,vergesse,,vergisst,,vergisst,vergaß,,vergessen,,vergäße,,vergiss,,,vergesst,,haben,,,,,,,oublier
 72,fertigen,fertige,,fertigst,,fertigt,fertigte,,gefertigt,,fertigte,,fertig,fertige,,fertigt,,haben,,,,,,,fabrication
@@ -137,7 +137,7 @@
 135,gedenken,gedenke,gedenk,gedenkst,,gedenkt,gedachte,,gedacht,,gedächte,,gedenk,gedenke,,gedenkt,,haben,,,,,,,commémorer
 136,funktionieren,funktioniere,,funktionierst,,funktioniert,funktionierte,,funktioniert,,funktionierte,,funktioniere,funktionier,,funktioniert,,haben,,,"Fotothek df n-20 0000142 Zerspannungsfacharbeiter.jpg|thumb|1|eine [[Maschine]], die ''funktioniert''","FHM-Orchestra-mk2006-02.jpg|thumb|1|ein [[Orchester]] ''funktioniert'', wenn [[alle]] [[zusammenspielen]]",,,fonction
 137,verkaufen,verkaufe,,verkaufst,,verkauft,verkaufte,,verkauft,,verkaufte,,verkauf,verkaufe,,verkauft,,haben,,,,,,,vendre
-138,schießen,schieße,,schießt,,schießt,schoss,,geschossen,,schösse,,schieß,,,schießt,,haben,sein,,,,,,tirer
+138,schießen,schieße,,schießt,,schießt,schoss,,geschossen,,schösse,,schieß,,,schießt,,haben,sein,,,,,,"tirer,abattre"
 139,dauern,dauere,,dauerst,,dauert,dauerte,,gedauert,,dauerte,,dauere,,,dauert,,haben,,,,,,,dernier
 140,kämpfen,kämpfe,,kämpfst,,kämpft,kämpfte,,gekämpft,,kämpfte,,kämpf,kämpfe,,kämpft,,haben,,Aulalassance.jpg|mini|1|''kämpfende'' Tai-Chi-Chuan-Kämpfer,,,,,bataille
 141,wünschen,wünsche,,wünschst,wünscht,wünscht,wünschte,,gewünscht,,wünschte,,wünsche,,,wünscht,,haben,,,,,,,souhait
@@ -146,7 +146,7 @@
 144,führen,führe,,führst,,führt,führte,,geführt,,führte,,führe,,,führt,,haben,,,,,,,plomb
 145,öffnen,öffne,,öffnest,,öffnet,öffnete,,geöffnet,,öffnete,,öffne,,,öffnet,,haben,,,,,,,ouvrir
 146,interessieren,interessiere,,interessierst,,interessiert,interessierte,,interessiert,,interessierte,,interessiere,interessier,,interessiert,,haben,,,,,,,intéressé
-147,brechen,breche,,brichst,,bricht,brach,,gebrochen,,bräche,,brich,,,brecht,,haben,sein,,Boelge stor.jpg|thumb|2|Der [[Kamm]] einer [[Welle]] ''bricht.'',Oktoberfest 2011 007 vomit drunken female.jpg|thumb|9|Eine [[Betrunkene]] des [[München]]er [[Oktoberfest]]es muss ''brechen.'',,,casser
+147,brechen,breche,,brichst,,bricht,brach,,gebrochen,,bräche,,brich,,,brecht,,haben,sein,,Boelge stor.jpg|thumb|2|Der [[Kamm]] einer [[Welle]] ''bricht.'',Oktoberfest 2011 007 vomit drunken female.jpg|thumb|9|Eine [[Betrunkene]] des [[München]]er [[Oktoberfest]]es muss ''brechen.'',,,"casser,rompre"
 148,verletzen,verletze,,verletzt,,verletzt,verletzte,,verletzt,,verletzte,,verletze,,,verletzt,,haben,,,,,,,blesser
 149,bitten,bitte,,bittest,,bittet,bat,,gebeten,,bäte,,bitte,,,bittet,,haben,,,,,,,demander
 150,verstecken,verstecke,,versteckst,,versteckt,versteckte,,versteckt,,versteckte,,verstecke,,,versteckt,,haben,,,,,,,cacher
@@ -167,7 +167,7 @@
 165,behalten,behalte,,behältst,,behält,behielt,,behalten,,behielte,,behalte,,,behaltet,,haben,,,,,,,garder
 166,besorgen,besorge,,besorgst,,besorgt,besorgte,,besorgt,,besorgte,,besorge,besorg,,besorgt,,haben,,,,,,,obtenir
 167,erkennen,erkenne,,erkennst,,erkennt,erkannte,,erkannt,,erkennte,,erkenn,erkenne,,erkennt,,haben,,,,,,,reconnaître
-168,hängen,hänge,,hängst,,hängt,hängte,,gehängt,,hängte,,hänge,häng,,hängt,,haben,,,,,,,accrocher
+168,hängen,hänge,,hängst,,hängt,hängte,,gehängt,,hängte,,hänge,häng,,hängt,,haben,,,,,,,être accroché
 169,fehlen,fehle,,fehlst,,fehlt,fehlte,,gefehlt,,fehlte,,fehle,,,fehlt,,haben,,,,,,,manquer
 170,gehören,gehöre,,gehörst,,gehört,gehörte,,gehört,,gehörte,,gehör,gehöre,,gehört,,haben,,,,,,,appartenir
 171,melden,melde,,meldest,,meldet,meldete,,gemeldet,,meldete,,melde,,,meldet,,haben,,,,,,,rapport
@@ -239,7 +239,7 @@
 237,spüren,spüre,,spürst,,spürt,spürte,,gespürt,,spürte,,spüre,,,spürt,,haben,,,,,,,sens
 238,handeln,handle,handele,handelst,,handelt,handelte,,gehandelt,,handelte,,handle,handel,,handelt,,haben,,,,,,,acte
 239,teilen,teile,,teilst,,teilt,teilte,,geteilt,,teilte,,teile,,,teilt,,haben,,,,,,,diviser
-240,bieten,biete,,bietest,beutst,bietet,bot,,geboten,,böte,,biete,beut,,bietet,,haben,,"Bundesarchiv B 145 Bild-F019013-0008, Bremerhaven, Fischereihafen, Auktion.jpg|260px|10|Ein Mann bietet per Handzeichen bei einer Fischauktion.",,,,,offrir
+240,bieten,biete,,bietest,beutst,bietet,bot,,geboten,,böte,,biete,beut,,bietet,,haben,,"Bundesarchiv B 145 Bild-F019013-0008, Bremerhaven, Fischereihafen, Auktion.jpg|260px|10|Ein Mann bietet per Handzeichen bei einer Fischauktion.",,,,,"offrir,présenter"
 241,überraschen,überrasche,,überraschst,überrascht,überrascht,überraschte,,überrascht,,überraschte,,überrasche,,,überrascht,,haben,,,,,,,de surprendre
 242,leiden,leide,,leidest,,leidet,litt,,gelitten,,litte,,leide,''selten:'' leid,,leidet,,haben,,,,,,,Souffrir
 243,überprüfen,überprüfe,,überprüfst,,überprüft,überprüfte,,überprüft,,überprüfte,,überprüfe,,,überprüft,,haben,,,,,,,vérifier
@@ -280,7 +280,7 @@
 278,schenken,schenke,,schenkst,,schenkt,schenkte,,geschenkt,,schenkte,,schenk,schenke,,schenkt,,haben,,,,,,,donner
 279,trennen,trenne,,trennst,,trennt,trennte,,getrennt,,trennte,,trenne,,,trennt,,haben,,,,,,,séparé
 280,warnen,warne,,warnst,,warnt,warnte,,gewarnt,,warnte,,warne,,,warnt,,haben,,,,,,,avertir
-281,treiben,treibe,,treibst,,treibt,trieb,,getrieben,,triebe,,treib,treibe,,treibt,,haben,sein,,Caçarelhos48.jpg|thumb|1|[[Hirte]]n ''treiben'' [[Rind]]er die [[Straße]] [[hinunter]],A view of Phewa Lake at Morning time.JPG|thumb|6|[[Boot]]e ''treiben'' auf einem [[See]],0 Le dinandier Guy Clabots - Leffe (1).JPG|thumb|8|ein [[Kupferschmied]] ''treibt'' ein [[Werkstück]] in [[Form]],Sexual scene at a red-figure tondo of a kylix at the Museo nazionale (Tarquinia).jpg|thumb|9|schon die [[alt]]en [[Grieche]]n ''trieben'' es [[heftig]] [[miteinander]],conduire
+281,treiben,treibe,,treibst,,treibt,trieb,,getrieben,,triebe,,treib,treibe,,treibt,,haben,sein,,Caçarelhos48.jpg|thumb|1|[[Hirte]]n ''treiben'' [[Rind]]er die [[Straße]] [[hinunter]],A view of Phewa Lake at Morning time.JPG|thumb|6|[[Boot]]e ''treiben'' auf einem [[See]],0 Le dinandier Guy Clabots - Leffe (1).JPG|thumb|8|ein [[Kupferschmied]] ''treibt'' ein [[Werkstück]] in [[Form]],Sexual scene at a red-figure tondo of a kylix at the Museo nazionale (Tarquinia).jpg|thumb|9|schon die [[alt]]en [[Grieche]]n ''trieben'' es [[heftig]] [[miteinander]],"pousser,pratiquer"
 282,erwähnen,erwähne,,erwähnst,,erwähnt,erwähnte,,erwähnt,,erwähnte,,erwähne,,,erwähnt,,haben,,,,,,,mention
 283,aufnehmen,nehme auf,,nimmst auf,,nimmt auf,nahm auf,,aufgenommen,,nähme auf,,nimm auf,,,nehmt auf,,haben,,,,,,,enregistrer
 284,entdecken,entdecke,,entdeckst,,entdeckt,entdeckte,,entdeckt,,entdeckte,,entdecke,,,entdeckt,,haben,,,,,,,découvrir
@@ -370,6 +370,7 @@
 368,fernsehen,sehe fern,,siehst fern,,sieht fern,sah fern,,ferngesehen,,sähe fern,,sieh fern,,,seht fern,,haben,,,,,,,la télé
 369,entführen,entführe,,entführst,,entführt,entführte,,entführt,,entführte,,entführe,,,entführt,,haben,,,,,,,kidnapper
 370,streiten,streite,,streitest,,streitet,stritt,,gestritten,,stritte,,streite,,,streitet,,haben,,,,,,,argumenter
+370,sich streiten,streite mich,,streitest dich,,streitet sich,stritt sich,,sich gestritten,,stritte,,streite,,,streitet,,haben,,,,,,,se disputer
 371,erfüllen,erfülle,,erfüllst,,erfüllt,erfüllte,,erfüllt,,erfüllte,,erfülle,erfüll,,erfüllt,,haben,,,,,,,remplir
 372,entwickeln,entwickle,,entwickelst,,entwickelt,entwickelte,,entwickelt,,entwickelte,,entwickle,,,entwickelt,,haben,,,,,,,développer
 373,zuhören,höre zu,,hörst zu,,hört zu,hörte zu,,zugehört,,hörte zu,,höre zu,,,hört zu,,haben,,Pierre-Auguste Renoir 017.jpg|thumb|1|Ein [[jung]]e [[Frau]] ''hört'' bei einem [[Konzert]] ''zu.'',,,,,écouter
@@ -1230,7 +1231,7 @@
 1228,scheren,schere,,scherst,,schert,schor,scherte,geschoren,geschert,schöre,scherte,schere,,,schert,,haben,,Sheep shearing.jpg|250px|1|Ein Schaf ''wird geschoren.'',,,,,tondre
 1229,notieren,notiere,,notierst,,notiert,notierte,,notiert,,notierte,,notiere,notier,,notiert,,haben,,,,,,,note
 1230,belohnen,belohne,,belohnst,,belohnt,belohnte,,belohnt,,belohnte,,belohn,belohne,,belohnt,,haben,,,,,,,récompense
-1231,stehenbleiben,bleibe stehen,,bleibst stehen,,bleibt stehen,blieb stehen,,stehengeblieben,,bliebe stehen,,bleib stehen,,,bleibt stehen,,sein,,,,,,,arrêt
+1231,stehenbleiben,bleibe stehen,,bleibst stehen,,bleibt stehen,blieb stehen,,stehengeblieben,,bliebe stehen,,bleib stehen,,,bleibt stehen,,sein,,,,,,,rester
 1232,bereithalten,halte bereit,,hältst bereit,,hält bereit,hielt bereit,,bereitgehalten,,hielte bereit,,halt bereit,halte bereit,,haltet bereit,,haben,,,,,,,être prêt
 1233,reiben,reibe,,reibst,,reibt,rieb,,gerieben,,riebe,,reibe,reib,,reibt,,haben,,,,,,,frotter
 1234,gönnen,gönne,,gönnst,,gönnt,gönnte,,gegönnt,,gönnte,,gönne,,,gönnt,,haben,,,,,,,traiter
