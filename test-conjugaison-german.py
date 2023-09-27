@@ -216,8 +216,6 @@ def display_question(verb, tenses, given_tense, responses, key=''):
             col.success('OK')
             if st.session_state['first_shot'] == 0:
                 score += 1
-    st.markdown(
-        f'score: {score} {len(results)} {results} {st.session_state["first_shot"]}')
     if score >= len(results)-1:
         st.session_state['current_question'] += 1
         st.success("bravo!!!")
@@ -236,6 +234,8 @@ def display_question(verb, tenses, given_tense, responses, key=''):
                        use_container_width=True)
         if ok:
             st.experimental_rerun()
+    st.markdown(
+        f'score: {score} {len(results)} {results} {st.session_state["first_shot"]}')
 
 
 ################################################################
