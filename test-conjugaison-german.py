@@ -148,6 +148,7 @@ def find_passive_form(verb, tense):
 
 def pick_entry(verb, tenses):
     res = []
+    st.write(f'AAAA {tenses}')
     for tense in tenses:
         # tense = tense_list[tense]
         if tense != 'Perfekt':
