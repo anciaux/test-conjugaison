@@ -288,12 +288,15 @@ def generate_questions(verbs, tenses, N):
     Nverbs = len(verbs)
     Ntenses = len(tense_list)
 
-    if N > Nverbs*(Ntenses-1):
+    if N > Nverbs:
         st.error("Pas assez de verbes")
         raise RuntimeError("not enough verbs")
 
+    random_verbs = [e for e in range(0, Nverbs)]
+    random.shuffle(random_verbs)
     for i in range(0, N):
-        verb = random.randint(0, Nverbs-1)
+        # verb = random.randint(0, Nverbs-1)
+        verb = random_verbs[i]
         verb = verbs[verb]
         given_tense = random.randint(0, Ntenses-1)
 
@@ -391,7 +394,7 @@ tenses = s_cont.multiselect("Choisi les temps à réviser",
                             options=tense_list, default=selected_tense_list)
 
 N = s_cont.number_input('Nombre de question', value=len(
-    selected_verb_list)*(len(tense_list)-1))
+    selected_verb_list))
 button = s_cont.button('Démarer le test')
 if 'started' not in st.session_state:
     st.session_state['started'] = False
