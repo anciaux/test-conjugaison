@@ -188,7 +188,7 @@ def display_question(verb, tenses, given_tense, responses, key=''):
         elif tense == 'Infinitif':
             _tense = 'Traduction'
 
-        if tense == tense_list[given_tense]:
+        if tense == tenses[given_tense]:
             col.text_input(_tense, placeholder=response, disabled=True,
                            key=key+"reponse"+str(i)+tense)
             res = response
@@ -209,7 +209,8 @@ def display_question(verb, tenses, given_tense, responses, key=''):
         if result not in response and result != ','.join(response) and result != '':
             st.session_state['first_shot'] += 1
             col.error('Non!')
-        elif (result in response or result == ','.join(response)) and tense != tense_list[given_tense]:
+        elif (result in response or result == ','.join(response)
+              ) and tense != tenses[given_tense]:
             col.success('OK')
             score += 1
     if score >= len(results)-1:
