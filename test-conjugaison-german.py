@@ -169,7 +169,7 @@ def find_answers(verb, tenses):
 
 def display_question(verb, tenses, given_tense, responses, key=''):
     st.warning("&#9888; Il faut écrire 'Ss' pour le caractère 'ß'")
-
+    st.error(given_tense)
     cols = st.columns(len(tenses))
 
     if 'current_question' in st.session_state:
