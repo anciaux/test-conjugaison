@@ -288,7 +288,7 @@ def generate_questions(verbs, tenses, N):
     Nverbs = len(verbs)
     Ntenses = len(tense_list)
 
-    if N > Nverbs:
+    if N > Nverbs*(Ntenses-1):
         st.error("Pas assez de verbes")
         raise RuntimeError("not enough verbs")
 
