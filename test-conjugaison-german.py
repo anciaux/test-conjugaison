@@ -379,7 +379,7 @@ selected_verb_list = [
     'tun'
 ]
 
-selected_verb_list = ['treiben']
+# selected_verb_list = ['treiben']
 
 with st.expander('full data'):
     _df = df[df['Infinitiv'].isin(selected_verb_list)]
