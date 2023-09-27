@@ -204,7 +204,7 @@ def display_question(verb, tenses, given_tense, responses, key=''):
     for col, tense, response, result in zip(cols, tenses, responses, results):
         response = response.lower().strip()
         response = [e.strip() for e in response.split(',')]
-        result = result.lower().strip()
+        result = result.lower().strip().replace('Ss', 'ß')
         result = [e.strip() for e in result.split(',')]
         result = ','.join(result)
         # col.write(response)
