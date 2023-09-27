@@ -369,8 +369,9 @@ selected_verb_list = [
     'tun'
 ]
 
-# _df = df[df['Infinitiv'].isin(selected_verb_list)]
-# st.dataframe(_df)
+with st.expander('full data'):
+    _df = df[df['Infinitiv'].isin(selected_verb_list)]
+    st.dataframe(_df)
 
 for v in selected_verb_list:
     if v not in verb_list:
