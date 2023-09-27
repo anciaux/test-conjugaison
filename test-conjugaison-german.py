@@ -381,11 +381,6 @@ selected_verb_list = [
 
 # selected_verb_list = ['treiben']
 
-with st.expander('full data'):
-    _df = df[df['Infinitiv'].isin(selected_verb_list)]
-    _df = _df.sort_values('Infinitiv', )
-    st.dataframe(_df)
-
 for v in selected_verb_list:
     if v not in verb_list:
         raise RuntimeError(f'we have a problem {v}')
@@ -412,6 +407,11 @@ N = s_cont.number_input('Nombre de question', value=len(
 button = s_cont.button('Démarer le test')
 if 'started' not in st.session_state:
     st.session_state['started'] = False
+
+with st.expander('full data'):
+    _df = df[df['Infinitiv'].isin(selected_verb_list)]
+    _df = _df.sort_values('Infinitiv', )
+    st.dataframe(_df)
 
 if button or st.session_state['started']:
     st.session_state['started'] = True
