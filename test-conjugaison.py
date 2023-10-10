@@ -515,14 +515,30 @@ start = st.empty()
 s_cont = start.container()
 
 selected_verb_list = [
+    'être',
+    'avoir',
+    'aimer',
+    'avancer',
+    'jeter',
+    'appeler',
+    'courir',
+    'manger',
     'faire',
     'dire',
     'pouvoir',
     'aller',
     'voir',
-    'vivre',
-    'écrire',
-    'lire'
+    'dormir',
+    'conduire',
+    'savoir',
+    'falloir',
+    'croire',
+    'recevoir',
+    'apercevoir',
+    'comprendre',
+    'aprécier',
+    'crier',
+    'envoyer'
 ]
 
 for v in selected_verb_list:
