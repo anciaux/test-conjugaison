@@ -553,7 +553,12 @@ verbs = s_cont.multiselect("Choisi les verbes à réviser",
 #           'subjonctif passé', 'indicatif futur antérieur',
 #           'impératif passé', 'conditionnel passé',
 #           'indicatif passé antérieur']
-selected_tense_list = tense_list
+selected_tense_list = [
+    'indicatif présent',
+    'indicatif passé composé',
+    'indicatif passé simple',
+    'indicatif passé antérieur',
+]
 
 for t in selected_tense_list:
     if t not in tense_list:
