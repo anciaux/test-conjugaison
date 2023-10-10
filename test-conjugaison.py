@@ -98,7 +98,14 @@ verb_list = [
     'offrir',
     'souffrir',
     'écrire',
-    'lire'
+    'lire',
+    'dormir',
+    'conduire',
+    'recevoir',
+    'apercevoir',
+    'apprécier',
+    'crier',
+    'envoyer',
 ]
 ################################################################
 participes = {
@@ -165,7 +172,13 @@ participes = {
     'souffrir':    'avoir',
     'écrire':    'avoir',
     'lire':    'avoir',
-
+    'dormir': 'avoir',
+    'conduire': 'avoir',
+    'recevoir': 'avoir',
+    'apercevoir': 'avoir',
+    'apprécier': 'avoir',
+    'crier': 'avoir',
+    'envoyer': 'avoir'
 }
 
 ################################################################
@@ -536,7 +549,7 @@ selected_verb_list = [
     'recevoir',
     'apercevoir',
     'comprendre',
-    'aprécier',
+    'apprécier',
     'crier',
     'envoyer'
 ]
