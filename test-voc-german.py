@@ -10,7 +10,7 @@ import random
 
 st.set_page_config(layout="wide")
 
-df = pd.read_csv('german_voc.csv')
+df = pd.read_csv('german_voc.csv', sep=':')
 
 to_remove = [e for e in df.columns if e.startswith('Unnamed')]
 df.drop(labels=to_remove, inplace=True, axis=1)
@@ -63,6 +63,7 @@ def display_question(voc, responses, key=''):
         response = response.lower().strip()
         response = [e.strip() for e in response.split('/')]
         result = result.replace('Ss', 'ß').lower().strip()
+        result = result.replace(',', ' ').lower().strip()
         result = [e.strip() for e in result.split(',')]
         result = ','.join(result)
         if result not in response and result != ','.join(response) and result != '':
