@@ -47,7 +47,7 @@ def display_question(voc, responses, key=''):
     headers = df.columns
     for (i, col), response in zip(enumerate(cols), responses):
 
-        if i == 0:
+        if i == 1:
             col.text_input(response, placeholder=response, disabled=True,
                            key=key+"reponse"+str(i)+response)
             res = response
@@ -64,13 +64,15 @@ def display_question(voc, responses, key=''):
         response = [e.strip() for e in response.split('/')]
         result = result.replace('Ss', 'ß').lower().strip()
         result = result.replace(',', ' ').lower().strip()
+        result = result.replace('!', '').lower().strip()
+        result = result.replace('.', '').lower().strip()
         result = [e.strip() for e in result.split(',')]
         result = ','.join(result)
         if result not in response and result != ','.join(response) and result != '':
             st.session_state['first_shot'] += 1
             col.error('Non!')
         elif (result in response or result == '/'.join(response)
-              ) and i != 0:
+              ) and i != 1:
             col.success('OK')
             score += 1
     if score >= len(results)-1:
