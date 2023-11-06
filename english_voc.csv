@@ -48,7 +48,8 @@ adventure (holidays)					: (vacances) aventure
 airport							: aéroport							       
 boarding pass						: carte d'embarquement						       
 bus station						: gare routière							       
-gate							: quai								      
+platform						: quai
+gate							: porte
 information						: information
 station							: gare, station							       
 ticket							: billet								       
