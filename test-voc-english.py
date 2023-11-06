@@ -20,7 +20,6 @@ df.rename(columns=lambda x: x.strip(), inplace=True)
 
 ################################################################
 voc_list = list(df['anglais'])
-print(voc_list)
 
 
 def find_answers(voc):
@@ -99,7 +98,6 @@ def display_question(voc, responses, key=''):
 
 
 def main(N):
-
     if 'points' not in st.session_state:
         st.session_state['points'] = 0
 
@@ -161,13 +159,13 @@ def generate_questions(vocs, N):
     random_vocs = [e for e in range(0, Nvocs)]
     random.shuffle(random_vocs)
     for i in range(0, N):
+
         voc = random_vocs[i]
         voc = voc_list[voc]
 
         while voc in questions:
             voc = random.randint(0, Nvocs-1)
             voc = voc_list[voc]
-
         find_answers(voc)
         questions.add(voc)
 
@@ -181,7 +179,7 @@ s_cont = start.container()
 
 
 N = s_cont.number_input('Nombre de question', value=len(
-    voc_list))
+    voc_list)-1)
 button = s_cont.button('Démarer le test')
 if 'started' not in st.session_state:
     st.session_state['started'] = False
