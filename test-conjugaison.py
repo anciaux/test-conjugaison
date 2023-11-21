@@ -106,6 +106,16 @@ verb_list = [
     'apprécier',
     'crier',
     'envoyer',
+    'peser',
+    'élever',
+    'cuire',
+    'asseoir',
+    'servir',
+    'céder',
+    'espérer',
+    'rire',
+    'agir',
+    'essayer'
 ]
 ################################################################
 participes = {
@@ -178,7 +188,17 @@ participes = {
     'apercevoir': 'avoir',
     'apprécier': 'avoir',
     'crier': 'avoir',
-    'envoyer': 'avoir'
+    'envoyer': 'avoir',
+    'peser': 'avoir',
+    'élever': 'avoir',
+    'cuire': 'avoir',
+    'asseoir': 'être',
+    'servir': 'avoir',
+    'céder': 'avoir',
+    'espérer': 'avoir',
+    'rire': 'avoir',
+    'agir': 'avoir',
+    'essayer': 'avoir'
 }
 
 ################################################################
@@ -316,7 +336,11 @@ def find_direct_form(pronom, verb, tense):
     _map_pronom = map_tense_map_pronom[tense]
     _pronom = _map_pronom[pronom.lower()]
     _tense = map_direct_tenses[tense]
-    _conj = conjugaisons[verb][_tense]
+    try:
+        _conj = conjugaisons[verb][_tense]
+    except KeyError as e:
+        print(pronom, _pronom, verb, tense, _tense)
+        raise e
     try:
         form = _conj[_pronom]
     except IndexError:
@@ -336,13 +360,15 @@ map_passive_tenses = {
 
 
 def find_passive_form(pronom, verb, tense):
-    print(pronom, verb, tense)
     _tense = map_passive_tenses[tense]
     _map_pronom = map_tense_map_pronom[tense]
     _pronom = _map_pronom[pronom.lower()]
     conj = conjugaisons[participes[verb]][_tense]
-    conj2 = conjugaisons[verb]["participle past"]
-    print(_tense, _pronom, conj, conj2)
+    try:
+        conj2 = conjugaisons[verb]["participle past"]
+    except KeyError as e:
+        print(_tense, _pronom, verb, conj)
+        raise e
     if len(conj2) == 1:
         return conj[_pronom] + " " + conj2[0]
     if participes[verb] == 'avoir':
@@ -551,7 +577,35 @@ selected_verb_list = [
     'comprendre',
     'apprécier',
     'crier',
-    'envoyer'
+    'envoyer',
+    'attendre',
+    'peser',
+    'élever',
+    'cuire',
+    'asseoir',
+    'mettre',
+    'venir',
+    'servir',
+    'céder',
+    'espérer',
+    'retenir',
+    'partir',
+    'rire',
+    'craindre',
+    'connaître',
+    'finir',
+    'agir',
+    'valoir',
+    'payer',
+    'suivre',
+    'mourir',
+    'ouvrir',
+    'offrir',
+    'essayer',
+    'vivre',
+    'lire',
+    'oublier',
+    'plaire'
 ]
 
 for v in selected_verb_list:
@@ -567,10 +621,10 @@ verbs = s_cont.multiselect("Choisi les verbes à réviser",
 #           'impératif passé', 'conditionnel passé',
 #           'indicatif passé antérieur']
 selected_tense_list = [
-    'indicatif présent',
-    'indicatif passé composé',
-    'indicatif passé simple',
-    'indicatif passé antérieur',
+    'indicatif imparfait',
+    'indicatif plus que parfait',
+    'indicatif futur',
+    'indicatif futur antérieur',
 ]
 
 for t in selected_tense_list:
