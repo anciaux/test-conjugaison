@@ -621,10 +621,10 @@ verbs = s_cont.multiselect("Choisi les verbes à réviser",
 #           'impératif passé', 'conditionnel passé',
 #           'indicatif passé antérieur']
 selected_tense_list = [
-    'indicatif imparfait',
-    'indicatif plus que parfait',
-    'indicatif futur',
-    'indicatif futur antérieur',
+    'conditionnel présent',
+    'conditionnel passé',
+    'impératif présent',
+    'impératif passé',
 ]
 
 for t in selected_tense_list:
