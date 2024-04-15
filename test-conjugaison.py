@@ -316,6 +316,7 @@ map_tense_map_pronom = {
     'subjonctif présent': map_pronom,
     'subjonctif imparfait': map_pronom,
     'subjonctif passé': map_pronom,
+    'subjonctif plus que parfait': map_pronom,
     'impératif présent': map_pronom_imperatif,
     'impératif passé': map_pronom_imperatif,
 }
@@ -340,6 +341,7 @@ map_passive_tenses = {
     'conditionnel passé': "conditional present",
     'impératif passé': "imperative present",
     'subjonctif passé': "subjunctive present",
+    'subjonctif plus que parfait': "subjunctive imperfect",
     'indicatif passé antérieur': "indicative past"
 }
 
@@ -568,8 +570,20 @@ verbs = s_cont.multiselect("Choisi les verbes à réviser",
 selected_tense_list = [
     'indicatif présent',
     'indicatif passé composé',
-    'indicatif passé simple',
+    'indicatif futur antérieur',
     'indicatif passé antérieur',
+    'indicatif plus que parfait',
+    'indicatif imparfait',
+    'indicatif futur',
+    'indicatif passé simple',
+    'conditionnel présent',
+    'conditionnel passé',
+    'impératif présent',
+    'impératif passé',
+    'subjonctif présent',
+    'subjonctif passé',
+    'subjonctif imparfait',
+    'subjonctif plus que parfait'
 ]
 
 for t in selected_tense_list:
