@@ -30,7 +30,8 @@ tense_list = [
     'impératif passé',
     'subjonctif présent',
     'subjonctif passé',
-    'subjonctif imparfait'
+    'subjonctif imparfait',
+    'subjonctif plus que parfait'
 ]
 
 
@@ -106,6 +107,10 @@ verb_list = [
     'apprécier',
     'crier',
     'envoyer',
+    'peser',
+    'élever',
+    'cuire',
+    'assoir'
 ]
 ################################################################
 participes = {
@@ -178,7 +183,11 @@ participes = {
     'apercevoir': 'avoir',
     'apprécier': 'avoir',
     'crier': 'avoir',
-    'envoyer': 'avoir'
+    'envoyer': 'avoir',
+    'peser': 'avoir',
+    'élever': 'avoir',
+    'cuire': 'avoir',
+    'assoir': 'être'
 }
 
 ################################################################
@@ -528,36 +537,26 @@ start = st.empty()
 s_cont = start.container()
 
 selected_verb_list = [
-    'être',
-    'avoir',
-    'aimer',
-    'avancer',
-    'jeter',
-    'appeler',
-    'courir',
-    'manger',
-    'faire',
-    'dire',
-    'pouvoir',
-    'aller',
-    'voir',
-    'dormir',
-    'conduire',
-    'savoir',
-    'falloir',
-    'croire',
-    'recevoir',
-    'apercevoir',
     'comprendre',
     'apprécier',
     'crier',
-    'envoyer'
+    'envoyer',
+    'attendre',
+    'peser',
+    'élever',
+    'cuire',
+    'assoir'
 ]
 
+ok = True
 for v in selected_verb_list:
     if v not in verb_list:
-        raise RuntimeError(f'we have a problem {v}')
+        st.error(f'we have a problem {v}')
+        ok = False
 
+if not ok:
+    import sys
+    sys.exit(-1)
 
 verbs = s_cont.multiselect("Choisi les verbes à réviser",
                            options=verb_list, default=selected_verb_list)
