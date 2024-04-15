@@ -110,7 +110,13 @@ verb_list = [
     'peser',
     'élever',
     'cuire',
-    'assoir'
+    'asseoir',
+    'servir',
+    'céder',
+    'espérer',
+    'rire',
+    'agir',
+    'essayer'
 ]
 ################################################################
 participes = {
@@ -187,7 +193,13 @@ participes = {
     'peser': 'avoir',
     'élever': 'avoir',
     'cuire': 'avoir',
-    'assoir': 'être'
+    'asseoir': 'être',
+    'servir': 'avoir',
+    'céder': 'avoir',
+    'espérer': 'avoir',
+    'rire': 'avoir',
+    'agir': 'avoir',
+    'essayer': 'avoir'
 }
 
 ################################################################
@@ -326,7 +338,11 @@ def find_direct_form(pronom, verb, tense):
     _map_pronom = map_tense_map_pronom[tense]
     _pronom = _map_pronom[pronom.lower()]
     _tense = map_direct_tenses[tense]
-    _conj = conjugaisons[verb][_tense]
+    try:
+        _conj = conjugaisons[verb][_tense]
+    except KeyError as e:
+        print(pronom, _pronom, verb, tense, _tense)
+        raise e
     try:
         form = _conj[_pronom]
     except IndexError:
@@ -347,13 +363,15 @@ map_passive_tenses = {
 
 
 def find_passive_form(pronom, verb, tense):
-    print(pronom, verb, tense)
     _tense = map_passive_tenses[tense]
     _map_pronom = map_tense_map_pronom[tense]
     _pronom = _map_pronom[pronom.lower()]
     conj = conjugaisons[participes[verb]][_tense]
-    conj2 = conjugaisons[verb]["participle past"]
-    print(_tense, _pronom, conj, conj2)
+    try:
+        conj2 = conjugaisons[verb]["participle past"]
+    except KeyError as e:
+        print(_tense, _pronom, verb, conj)
+        raise e
     if len(conj2) == 1:
         return conj[_pronom] + " " + conj2[0]
     if participes[verb] == 'avoir':
@@ -547,7 +565,7 @@ selected_verb_list = [
     'peser',
     'élever',
     'cuire',
-    'assoir'
+    'asseoir',
 ]
 
 ok = True
