@@ -566,6 +566,14 @@ selected_verb_list = [
     'élever',
     'cuire',
     'asseoir',
+    'jeter',
+    'appeler',
+    'courir',
+    'manger',
+    'dormir',
+    'conduire',
+    'recevoir',
+    'apercevoir'
 ]
 
 ok = True
