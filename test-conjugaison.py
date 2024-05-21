@@ -557,23 +557,17 @@ start = st.empty()
 s_cont = start.container()
 
 selected_verb_list = [
-    'comprendre',
-    'apprécier',
-    'crier',
-    'envoyer',
-    'attendre',
-    'peser',
-    'élever',
-    'cuire',
-    'asseoir',
-    'jeter',
-    'appeler',
-    'courir',
-    'manger',
-    'dormir',
-    'conduire',
-    'recevoir',
-    'apercevoir'
+    'servir',
+    'céder',
+    'espérer',
+    'rire',
+    'craindre',
+    'finir',
+    'agir',
+    'valoir',
+    'payer',
+    'essayer',
+    'plaire'
 ]
 
 ok = True
@@ -594,22 +588,22 @@ verbs = s_cont.multiselect("Choisi les verbes à réviser",
 #           'impératif passé', 'conditionnel passé',
 #           'indicatif passé antérieur']
 selected_tense_list = [
-    'indicatif présent',
-    'indicatif passé composé',
-    'indicatif futur antérieur',
-    'indicatif passé antérieur',
-    'indicatif plus que parfait',
-    'indicatif imparfait',
-    'indicatif futur',
-    'indicatif passé simple',
-    'conditionnel présent',
-    'conditionnel passé',
     'impératif présent',
     'impératif passé',
+    'indicatif présent',
+    'indicatif passé composé',
+    'indicatif futur',
+    'indicatif futur antérieur',
+    'indicatif imparfait',
+    'indicatif plus que parfait',
+    'conditionnel présent',
+    'conditionnel passé',
     'subjonctif présent',
     'subjonctif passé',
     'subjonctif imparfait',
-    'subjonctif plus que parfait'
+    'subjonctif plus que parfait',
+    'indicatif passé antérieur',
+    'indicatif passé simple',
 ]
 
 for t in selected_tense_list:
