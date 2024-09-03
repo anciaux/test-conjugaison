@@ -117,7 +117,9 @@ verb_list = [
     'espérer',
     'rire',
     'agir',
-    'essayer'
+    'essayer',
+    'assiéger',
+    'acquérir'
 ]
 ################################################################
 participes = {
@@ -200,7 +202,9 @@ participes = {
     'espérer': 'avoir',
     'rire': 'avoir',
     'agir': 'avoir',
-    'essayer': 'avoir'
+    'essayer': 'avoir',
+    'assiéger': 'être',
+    'acquérir': 'avoir'
 }
 
 ################################################################
@@ -558,17 +562,15 @@ start = st.empty()
 s_cont = start.container()
 
 selected_verb_list = [
-    'servir',
-    'céder',
-    'espérer',
-    'rire',
-    'craindre',
-    'finir',
-    'agir',
-    'valoir',
-    'payer',
-    'essayer',
-    'plaire'
+    'être',
+    'avoir',
+    'aimer',
+    'avancer',
+    'appeler',
+    'courir',
+    'manger',
+    'acquérir',
+    'assiéger',
 ]
 
 ok = True
@@ -588,24 +590,25 @@ verbs = s_cont.multiselect("Choisi les verbes à réviser",
 #           'subjonctif passé', 'indicatif futur antérieur',
 #           'impératif passé', 'conditionnel passé',
 #           'indicatif passé antérieur']
-selected_tense_list = [
-    'impératif présent',
-    'impératif passé',
-    'indicatif présent',
-    'indicatif passé composé',
-    'indicatif futur',
-    'indicatif futur antérieur',
-    'indicatif imparfait',
-    'indicatif plus que parfait',
-    'conditionnel présent',
-    'conditionnel passé',
-    'subjonctif présent',
-    'subjonctif passé',
-    'subjonctif imparfait',
-    'subjonctif plus que parfait',
-    'indicatif passé antérieur',
-    'indicatif passé simple',
-]
+# selected_tense_list = [
+#    'impératif présent',
+#    'impératif passé',
+#    'indicatif présent',
+#    'indicatif passé composé',
+#    'indicatif futur',
+#    'indicatif futur antérieur',
+#    'indicatif imparfait',
+#    'indicatif plus que parfait',
+#    'conditionnel présent',
+#    'conditionnel passé',
+#    'subjonctif présent',
+#    'subjonctif passé',
+#    'subjonctif imparfait',
+#    'subjonctif plus que parfait',
+#    'indicatif passé antérieur',
+#    'indicatif passé simple',
+# ]
+selected_tense_list = tense_list.copy()
 
 for t in selected_tense_list:
     if t not in tense_list:
