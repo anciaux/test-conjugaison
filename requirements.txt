@@ -1,1 +1,1 @@
-from stqdm import stqdm
+stqdm
