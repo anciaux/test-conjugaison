@@ -164,14 +164,16 @@ def generate_questions(vocs, N):
         st.error("Pas assez de vocs")
         raise RuntimeError("not enough vocs")
 
-    random.shuffle(remaining_questions)
     for i in stqdm(range(0, N)):
+        random.shuffle(remaining_questions)
         voc = remaining_questions[0]
         find_answers(voc)
         questions.add(voc)
         remaining_questions.remove(voc)
 
-    return [e for e in questions]
+    questions = [e for e in questions]
+    random.shuffle(questions)
+    return questions
 
 
 ################################################################
@@ -187,9 +189,9 @@ if "started" not in st.session_state:
 
 with st.expander("full data"):
     _df = df
-    _df = _df.sort_values(
-        "anglais",
-    )
+    # _df = _df.sort_values(
+    #     "anglais",
+    # )
     st.dataframe(_df)
 
 if button or st.session_state["started"]:
